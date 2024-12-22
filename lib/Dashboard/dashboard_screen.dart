@@ -1,7 +1,6 @@
+import 'package:cinnex_mobile/Price%20Forecast/price_forecast_screen.dart';
 import 'package:cinnex_mobile/Shared/Widget/curved_appbar.dart';
-import 'package:cinnex_mobile/Shared/Widget/custom_bottom_navbar.dart';
 import 'package:flutter/material.dart';
-
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -11,16 +10,6 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  int _currentIndex = 0;
-
-  // Navigation handler
-  void _onNavItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-    // Add navigation logic here if needed.
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,56 +26,55 @@ class _DashboardScreenState extends State<DashboardScreen> {
           SafeArea(
             child: Column(
               children: [
-                const SizedBox(height: 100), // Space for the curved AppBar
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: ListTile(
-                      leading: const CircleAvatar(
-                        radius: 28,
-                        backgroundImage: AssetImage('assets/images/user_avatar.png'),
-                      ),
-                      title: Text(
-                        'Gayashan Deshapriya',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      subtitle: const Text('Galle District'),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 150), // Space for the curved AppBar
 
                 // Grid View for Features
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: GridView.count(
                       crossAxisCount: 2,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      childAspectRatio: 3 / 4, // Adjust aspect ratio for card size
                       children: [
                         _buildFeatureCard(
                           title: 'Price Forecast',
-                          icon: Icons.bar_chart,
-                          color: Colors.green,
+                          imagePath: 'assets/images/Price Forecast Icon.png',
+                          color: Theme.of(context).colorScheme.primary,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const PriceForecastScreen(),
+                              ),
+                            );
+                          },
                         ),
                         _buildFeatureCard(
                           title: 'Cinnamon Grades',
-                          icon: Icons.layers,
-                          color: Colors.orange,
+                          imagePath: 'assets/images/Disease Detection Icon.png',
+                          color: Theme.of(context).colorScheme.primary,
+                          onTap: () {
+                            // Add navigation to Cinnamon Grades screen
+                          },
                         ),
                         _buildFeatureCard(
                           title: 'Leaves',
-                          icon: Icons.eco,
-                          color: Colors.green,
+                          imagePath: 'assets/images/Disease Detection Icon.png',
+                          color: Theme.of(context).colorScheme.primary,
+                          onTap: () {
+                            // Add navigation to Leaves screen
+                          },
                         ),
                         _buildFeatureCard(
                           title: 'Diseases',
-                          icon: Icons.bug_report,
-                          color: Colors.green,
+                          imagePath: 'assets/images/Disease Detection Icon.png',
+                          color: Theme.of(context).colorScheme.primary,
+                          onTap: () {
+                            // Add navigation to Diseases screen
+                          },
                         ),
                       ],
                     ),
@@ -97,42 +85,46 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
       ),
-
-      // Custom Bottom Navigation Bar
-      bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: _currentIndex,
-        onTap: _onNavItemTapped,
-      ),
     );
   }
 
-  // Feature Card Widget
   Widget _buildFeatureCard({
     required String title,
-    required IconData icon,
+    required String imagePath,
     required Color color,
+    required VoidCallback onTap,
   }) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: 50, color: color),
-          const SizedBox(height: 10),
-          Text(
-            title,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        elevation: 3,
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Displaying the image
+            Image.asset(
+              imagePath, // The path to your image
+              height: 100,
+              width: 100,
+              fit: BoxFit.contain,
             ),
-          ),
-        ],
+            const SizedBox(height: 10),
+            Text(
+              title,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 14,
+                color: color,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
-

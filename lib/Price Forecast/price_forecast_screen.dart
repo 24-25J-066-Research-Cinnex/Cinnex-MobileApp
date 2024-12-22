@@ -1,0 +1,238 @@
+import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
+import 'package:flutter/material.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import '../Shared/Widget/curved_appbar.dart';
+
+
+class PriceForecastScreen extends StatefulWidget {
+  const PriceForecastScreen({super.key});
+
+
+  @override
+  State<PriceForecastScreen> createState() => _PriceForecastScreenState();
+}
+
+class _PriceForecastScreenState extends State<PriceForecastScreen> {
+  final List<String> grades = [
+    'Alba',
+    'C-5 Sp',
+    'C-5',
+    'C-4',
+    'H-2',
+  ];
+  final List<String> regions = [
+    'Galle',
+    'Matara',
+    'Kalutara',
+  ];
+
+  String? selectedGrade;
+  String? selectedRegion;
+  String? selectedDate; // Holds the selected date.
+
+  /// Function to open the date picker and update the selected date.
+  void _showDatePicker() async {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: 350,
+          child: SfDateRangePicker(
+            onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
+              if (args.value is DateTime) {
+                setState(() {
+                  selectedDate = DateFormat('yyyy-MM-dd').format(args.value);
+                  Navigator.pop(
+                      context); // Close the date picker after selection
+                });
+              }
+            },
+            selectionMode: DateRangePickerSelectionMode.single,
+            initialSelectedDate: DateTime.now(),
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme; // Access colors
+    final textTheme = theme.textTheme; // Access text styles
+
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Curved AppBar Background
+          const CurvedAppBar(
+            title: 'Price Forecast',
+            trailingIcon: Icons.notifications,
+            onTrailingIconPressed: null, // Add action if needed
+          ),
+          SafeArea(
+            child: Column(
+              children: [
+                // AppBar
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.arrow_back, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 50), // Space below AppBar
+
+                // Instruction Text
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    "Enter the required data to make a prediction",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 20), // Space before input fields
+
+                // Input Fields
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Column(
+                      children: [
+                        // Prediction Date Field with Calendar
+                        GestureDetector(
+                          onTap: _showDatePicker,
+                          child: TextFormField(
+                            readOnly: true,
+                            decoration: InputDecoration(
+                              labelText: "Select Prediction Date",
+                              labelStyle: textTheme.bodySmall,
+                              suffixIcon: const Icon(Icons.calendar_today),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            onTap: _showDatePicker,
+                            controller: TextEditingController(
+                                text: selectedDate ?? ''),
+                            // Open the date picker
+                          ),
+
+                        ),
+                        const SizedBox(height: 20),
+
+                        // Cinnamon Grade Dropdown
+                        DropdownButtonHideUnderline(
+                          child: DropdownButton2<String>(
+                            isExpanded: true,
+                            hint: Text(
+                              "Select Cinnamon Grade",
+                              style: textTheme.bodySmall,
+                            ),
+                            items: grades
+                                .map((grade) => DropdownMenuItem<String>(
+                                      value: grade,
+                                      child: Text(
+                                        grade,
+                                        style: textTheme.bodySmall,
+                                      ),
+                                    ))
+                                .toList(),
+                            value: selectedGrade,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedGrade = value;
+                              });
+                            },
+                            buttonStyleData: ButtonStyleData(
+                              height: 50,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.black26),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+
+                        // Region Dropdown
+                        DropdownButtonHideUnderline(
+                          child: DropdownButton2<String>(
+                            isExpanded: true,
+                            hint:  Text(
+                              "Select Your Region",
+                              style: textTheme.bodySmall,
+                            ),
+                            items: regions
+                                .map((region) => DropdownMenuItem<String>(
+                                      value: region,
+                                      child: Text(
+                                        region,
+                                        style: textTheme.bodySmall,
+                                      ),
+                                    ))
+                                .toList(),
+                            value: selectedRegion,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedRegion = value;
+                              });
+                            },
+                            buttonStyleData: ButtonStyleData(
+                              height: 50,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.black26),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+
+                        // Predict Market Price Button
+                        CustomButton(
+                          text: "Predict Market Price",
+                          onPressed: () {
+                            if (selectedGrade != null &&
+                                selectedRegion != null &&
+                                selectedDate != null) {
+                              // Add prediction logic here
+                              print(
+                                  "Selected Date: $selectedDate, Grade: $selectedGrade, Region: $selectedRegion");
+                            } else {
+
+                            }
+                          },
+                        ),
+                        const Spacer(), // Push the button to the bottom
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

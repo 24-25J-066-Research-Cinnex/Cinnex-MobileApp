@@ -12,11 +12,15 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme=Theme.of(context);
+    final colorScheme=theme.colorScheme;
+    final textTheme=theme.textTheme;
     return BottomNavigationBar(
       currentIndex: currentIndex,
-      selectedItemColor: Colors.green,
-      unselectedItemColor: Colors.black54,
       onTap: onTap,
+      selectedItemColor: colorScheme.primary, // Primary color for selected icon
+      unselectedItemColor: Colors.grey, // Default color for unselected icons
+      type: BottomNavigationBarType.fixed, // To keep the items aligned
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
