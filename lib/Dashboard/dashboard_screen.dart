@@ -1,3 +1,6 @@
+import 'package:cinnex_mobile/Cinnamon%20Grades/cinnamon_grades_screen.dart';
+import 'package:cinnex_mobile/Cinnamon%20Species/cinnamon_species_screen.dart';
+import 'package:cinnex_mobile/Diseasse%20Ditection/diseasse_ditection_screen.dart';
 import 'package:cinnex_mobile/Price%20Forecast/price_forecast_screen.dart';
 import 'package:cinnex_mobile/Shared/Widget/curved_appbar.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +39,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       crossAxisCount: 2,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
-                      childAspectRatio: 3 / 4, // Adjust aspect ratio for card size
+                      childAspectRatio:
+                          3 / 4, // Adjust aspect ratio for card size
                       children: [
                         _buildFeatureCard(
                           title: 'Price Forecast',
@@ -47,7 +51,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                const PriceForecastScreen(),
+                                    const PriceForecastScreen(),
                               ),
                             );
                           },
@@ -58,6 +62,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             // Add navigation to Cinnamon Grades screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const CinnomonGradesScreen(),
+                              ),
+                            );
                           },
                         ),
                         _buildFeatureCard(
@@ -66,6 +77,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             // Add navigation to Leaves screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const  CinnamonSpeciesScreen(),
+                              ),
+                            );
                           },
                         ),
                         _buildFeatureCard(
@@ -74,6 +92,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             // Add navigation to Diseases screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const DiseaseDitectionScreen(),
+                              ),
+                            );
                           },
                         ),
                       ],
