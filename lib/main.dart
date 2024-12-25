@@ -9,6 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -22,9 +23,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  void onLanguageChange(Locale locale) {
+  // Default locale is English
+  Locale _currentLocale = const Locale('en');
 
-    Locale _currentLocale = Locale('en'); // Default to English
+  void _changeLanguage(Locale locale) {
     setState(() {
       _currentLocale = locale;
     });
@@ -44,6 +46,7 @@ class _MyAppState extends State<MyApp> {
         Locale('en'), //English
         Locale('si'), //Sinhala
       ],
+        locale: _currentLocale,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -104,14 +107,20 @@ class _MyAppState extends State<MyApp> {
 
         ),
       ),
-      home: LanguageSelectionScreen(onLanguageChange: onLanguageChange)
+      //home: MainLayout(),
+      //home: LanguageSelectionScreen(onLanguageChange: onLanguageChange)
+      home : LanguageSelectionScreen(onLanguageChange: (Locale locale) {
+        _changeLanguage(locale); // Update the selected language
+      },
+      ),
     );
   }
 }
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
+  final Locale locale;
 
+  const MainLayout({super.key, required this.locale});
 
   @override
   State<MainLayout> createState() => _MainLayoutState();
@@ -119,12 +128,7 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
   MotionTabBarController? _motionTabBarController;
-  Locale _currentLocale = Locale('en'); // Default to English
-  void _changeLanguage(Locale locale) {
-    setState(() {
-      _currentLocale = locale;
-    });
-  }
+  late Locale _currentLocale;
 
   @override
   void initState() {
@@ -134,8 +138,14 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
       length: 4,
       vsync: this,
     );
+    _currentLocale = widget.locale;
   }
 
+  void _changeLanguage(Locale locale) {
+    setState(() {
+      _currentLocale = locale;
+    });
+  }
   @override
   void dispose() {
     super.dispose();
@@ -148,9 +158,14 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
       // Bottom Navigation Bar
       bottomNavigationBar: MotionTabBar(
         controller: _motionTabBarController,
-        initialSelectedTab: "Home",
+        initialSelectedTab: AppLocalizations.of(context)!.home,
         useSafeArea: true,
-        labels: const ["Home", "Dashboard", "Profile", "Settings"],
+        labels: [
+          AppLocalizations.of(context)!.home,
+          AppLocalizations.of(context)!.dashboard,
+          AppLocalizations.of(context)!.profile,
+          AppLocalizations.of(context)!.settings,
+        ],
         icons: const [
           Icons.home,
           Icons.dashboard,
@@ -182,7 +197,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
         physics: const NeverScrollableScrollPhysics(),
         controller: _motionTabBarController,
         children: <Widget>[
-          HomeScreen(onLanguageChange: _changeLanguage), // Home tab
+          HomeScreen(), // Home tab
           DashboardScreen(), // Dashboard tab
           MainPageContentComponent(
               title: "Profile", controller: _motionTabBarController!),

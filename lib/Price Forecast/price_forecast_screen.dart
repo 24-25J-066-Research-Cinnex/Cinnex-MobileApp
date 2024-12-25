@@ -5,10 +5,8 @@ import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../Shared/Widget/curved_appbar.dart';
 
-
 class PriceForecastScreen extends StatefulWidget {
   const PriceForecastScreen({super.key});
-
 
   @override
   State<PriceForecastScreen> createState() => _PriceForecastScreenState();
@@ -38,7 +36,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
       context: context,
       builder: (BuildContext context) {
         return SizedBox(
-          height: 350,
+          height: 300,
           child: SfDateRangePicker(
             onSelectionChanged: (DateRangePickerSelectionChangedArgs args) {
               if (args.value is DateTime) {
@@ -60,7 +58,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme; // Access colors
+    //final colorScheme = theme.colorScheme; // Access colors
     final textTheme = theme.textTheme; // Access text styles
 
     return Scaffold(
@@ -128,13 +126,12 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                               ),
                             ),
                             onTap: _showDatePicker,
-                            controller: TextEditingController(
-                                text: selectedDate ?? ''),
+                            controller:
+                                TextEditingController(text: selectedDate ?? ''),
                             // Open the date picker
                           ),
-
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 30),
 
                         // Cinnamon Grade Dropdown
                         DropdownButtonHideUnderline(
@@ -170,13 +167,13 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 30),
 
                         // Region Dropdown
                         DropdownButtonHideUnderline(
                           child: DropdownButton2<String>(
                             isExpanded: true,
-                            hint:  Text(
+                            hint: Text(
                               "Select Your Region",
                               style: textTheme.bodySmall,
                             ),
@@ -206,7 +203,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 30),
 
                         // Predict Market Price Button
                         CustomButton(
@@ -218,9 +215,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                               // Add prediction logic here
                               print(
                                   "Selected Date: $selectedDate, Grade: $selectedGrade, Region: $selectedRegion");
-                            } else {
-
-                            }
+                            } else {}
                           },
                         ),
                         const Spacer(), // Push the button to the bottom

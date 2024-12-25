@@ -1,4 +1,8 @@
 {
   "title": "Hello",
-  "message": "Welcome to our app!"
+  "message": "Welcome to our app!",
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings"
 }
