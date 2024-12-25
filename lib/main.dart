@@ -90,7 +90,7 @@ class _MyAppState extends State<MyApp> {
             fontFamily: 'Poppins',
           ),
           headlineMedium: TextStyle(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.black,
             fontFamily: 'Poppins',

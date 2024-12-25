@@ -20,7 +20,7 @@ class CurvedAppBar extends StatelessWidget {
     final textTheme = theme.textTheme; // Access text styles
 
     return SizedBox(
-      height: 150, // Height of the curved AppBar
+      height: 160, // Height of the curved AppBar
       child: Stack(
         children: [
           // Draw the custom curve
@@ -33,7 +33,7 @@ class CurvedAppBar extends StatelessWidget {
           SafeArea(
             child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

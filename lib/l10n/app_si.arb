@@ -15,7 +15,10 @@
 
   "cinnamon_diseases": "රෝග විනිශ්චය",
   "cinnamon_diseases_content": "කරුණාකර පින්තූරයක් උඩුගත කරන්න හෝ ඔබේ කුරුඳු කොළයේ පින්තූරයක් ගන්න.",
-  "cinnamon_diseases_button": "රෝගය පුරෝකථනය කරන්න",
+  "cinnamon_diseases_button0": "ගොනුව තෝරන්න",
+  "cinnamon_diseases_or": "හෝ",
+  "cinnamon_diseases_button1": "ඡායාරූපයක් ගන්න",
+  "cinnamon_diseases_button2": "රෝගය පුරෝකථනය කරන්න",
 
 
 

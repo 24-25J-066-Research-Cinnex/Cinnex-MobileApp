@@ -89,7 +89,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           },
                         ),
                         _buildFeatureCard(
-                          title: 'Diseases',
+                          title: AppLocalizations.of(context)!.cinnamon_diseases,
                           imagePath: 'assets/images/Disease Detection Icon.png',
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {

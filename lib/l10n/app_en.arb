@@ -15,7 +15,10 @@
 
   "cinnamon_diseases": "Diseases",
   "cinnamon_diseases_content": "Please upload a image or take a picture of your cinnamon leaf.",
-  "cinnamon_diseases_button": "Predict the Disease",
+  "cinnamon_diseases_button0": "Select file",
+  "cinnamon_diseases_or": "Or",
+  "cinnamon_diseases_button1": "Open Camera and take photo",
+  "cinnamon_diseases_button2": "Predict the Disease",
 
 
 
