@@ -4,6 +4,8 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../Shared/Widget/curved_appbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:logger/logger.dart';
 
 class PriceForecastScreen extends StatefulWidget {
   const PriceForecastScreen({super.key});
@@ -13,6 +15,7 @@ class PriceForecastScreen extends StatefulWidget {
 }
 
 class _PriceForecastScreenState extends State<PriceForecastScreen> {
+  final logger = Logger();
   final List<String> grades = [
     'Alba',
     'C-5 Sp',
@@ -65,8 +68,8 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
       body: Stack(
         children: [
           // Curved AppBar Background
-          const CurvedAppBar(
-            title: 'Price Forecast',
+          CurvedAppBar(
+            title: AppLocalizations.of(context)!.price_forecast,
             trailingIcon: Icons.notifications,
             onTrailingIconPressed: null, // Add action if needed
           ),
@@ -93,10 +96,10 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                 const SizedBox(height: 50), // Space below AppBar
 
                 // Instruction Text
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    "Enter the required data to make a prediction",
+                    AppLocalizations.of(context)!.price_forecast_content,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -118,7 +121,8 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                           child: TextFormField(
                             readOnly: true,
                             decoration: InputDecoration(
-                              labelText: "Select Prediction Date",
+                              labelText: AppLocalizations.of(context)!
+                                  .price_forecast_date,
                               labelStyle: textTheme.bodySmall,
                               suffixIcon: const Icon(Icons.calendar_today),
                               border: OutlineInputBorder(
@@ -138,7 +142,8 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                           child: DropdownButton2<String>(
                             isExpanded: true,
                             hint: Text(
-                              "Select Cinnamon Grade",
+                              AppLocalizations.of(context)!
+                                  .price_forecast_grade,
                               style: textTheme.bodySmall,
                             ),
                             items: grades
@@ -174,7 +179,8 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                           child: DropdownButton2<String>(
                             isExpanded: true,
                             hint: Text(
-                              "Select Your Region",
+                              AppLocalizations.of(context)!
+                                  .price_forecast_region,
                               style: textTheme.bodySmall,
                             ),
                             items: regions
@@ -207,13 +213,14 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
 
                         // Predict Market Price Button
                         CustomButton(
-                          text: "Predict Market Price",
+                          text: AppLocalizations.of(context)!
+                              .price_forecast_button,
                           onPressed: () {
                             if (selectedGrade != null &&
                                 selectedRegion != null &&
                                 selectedDate != null) {
                               // Add prediction logic here
-                              print(
+                              logger.d(
                                   "Selected Date: $selectedDate, Grade: $selectedGrade, Region: $selectedRegion");
                             } else {}
                           },

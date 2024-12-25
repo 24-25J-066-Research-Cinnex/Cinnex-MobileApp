@@ -16,6 +16,16 @@ class HomeScreen extends StatelessWidget {
             trailingIcon: Icons.notifications,
             onTrailingIconPressed: null, // Add action if needed
           ),
+          // Body
+          Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: Center(
+              child: Text(
+                AppLocalizations.of(context)!.message,
+                //style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
+          ),
         ],
       ),
     );

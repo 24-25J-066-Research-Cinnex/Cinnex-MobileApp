@@ -4,5 +4,25 @@
     "home": "Home",
     "dashboard": "Dashboard",
     "profile": "Profile",
-    "settings": "Settings"
+    "settings": "Settings",
+
+  "price_forecast": "Price Forecast",
+  "price_forecast_content": "Enter the required data to make a prediction",
+  "price_forecast_date": "Select Prediction Date",
+  "price_forecast_grade": "Select cinnamon Grade",
+  "price_forecast_region": "Select Your Region",
+  "price_forecast_button": "Predict Market Price",
+
+  "cinnamon_diseases": "Diseases",
+  "cinnamon_diseases_content": "Please upload a image or take a picture of your cinnamon leaf.",
+  "cinnamon_diseases_button": "Predict the Disease",
+
+
+
+
+
+  "cinnamon_grades": "Cinnamon Grades"
+
+
+
 }

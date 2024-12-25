@@ -7,9 +7,6 @@ import 'package:motion_tab_bar_v2/motion-tab-controller.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
-
-
 void main() {
   runApp(const MyApp());
 }
