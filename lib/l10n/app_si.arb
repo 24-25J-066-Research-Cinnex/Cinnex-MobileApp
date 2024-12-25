@@ -1,0 +1,23 @@
+{
+  "title": "හෙලෝ",
+  "message": "අපේ යෙදුමට සාදරයෙන් පිළිගනිමු!",
+    "home": "ප්\u200Dරධාන පිටුව",
+    "dashboard": "උපකරණ",
+    "profile": "පැතිකඩ",
+    "settings": "සැකසුම්",
+
+  "price_forecast": "මිල අනාවැකිය",
+  "price_forecast_content": "අනාවැකියක් කිරීමට අවශ්\u200Dය දත්ත ඇතුලත් කරන්න",
+  "price_forecast_date": "අනාවැකි දිනය තෝරන්න",
+  "price_forecast_grade": "කුරුඳු ශ්\u200Dරේණිය තෝරන්න",
+  "price_forecast_region": "ඔබේ කලාපය තෝරන්න",
+  "price_forecast_button": "වෙළඳපල මිල පුරෝකථනය කරන්න",
+
+  "cinnamon_diseases": "රෝග විනිශ්චය",
+  "cinnamon_diseases_content": "කරුණාකර පින්තූරයක් උඩුගත කරන්න හෝ ඔබේ කුරුඳු කොළයේ පින්තූරයක් ගන්න.",
+  "cinnamon_diseases_button": "රෝගය පුරෝකථනය කරන්න",
+
+
+
+  "cinnamon_grades": "කුරුඳු ශ්\u200Dරේණි"
+}

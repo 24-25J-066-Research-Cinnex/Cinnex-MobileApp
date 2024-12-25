@@ -1,6 +1,11 @@
+import 'package:cinnex_mobile/Cinnamon%20Grades/cinnamon_grades_screen.dart';
+import 'package:cinnex_mobile/Cinnamon%20Species/cinnamon_species_screen.dart';
+import 'package:cinnex_mobile/Disease%20Detection/disease_detection_screen.dart';
 import 'package:cinnex_mobile/Price%20Forecast/price_forecast_screen.dart';
 import 'package:cinnex_mobile/Shared/Widget/curved_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -16,8 +21,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: Stack(
         children: [
           // Curved AppBar
-          const CurvedAppBar(
-            title: 'Dashboard',
+          CurvedAppBar(
+            title: AppLocalizations.of(context)!.dashboard,
             trailingIcon: Icons.notifications,
             onTrailingIconPressed: null, // Add action if needed
           ),
@@ -36,10 +41,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       crossAxisCount: 2,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
-                      childAspectRatio: 3 / 4, // Adjust aspect ratio for card size
+                      childAspectRatio:
+                          3 / 4, // Adjust aspect ratio for card size
                       children: [
                         _buildFeatureCard(
-                          title: 'Price Forecast',
+                          title: AppLocalizations.of(context)!.price_forecast,
                           imagePath: 'assets/images/Price Forecast Icon.png',
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
@@ -47,17 +53,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                const PriceForecastScreen(),
+                                    const PriceForecastScreen(),
                               ),
                             );
                           },
                         ),
                         _buildFeatureCard(
-                          title: 'Cinnamon Grades',
+                          title: AppLocalizations.of(context)!.cinnamon_grades,
                           imagePath: 'assets/images/Disease Detection Icon.png',
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             // Add navigation to Cinnamon Grades screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const CinnomonGradesScreen(),
+                              ),
+                            );
                           },
                         ),
                         _buildFeatureCard(
@@ -66,6 +79,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             // Add navigation to Leaves screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const  CinnamonSpeciesScreen(),
+                              ),
+                            );
                           },
                         ),
                         _buildFeatureCard(
@@ -74,6 +94,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             // Add navigation to Diseases screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const DiseaseDetectionScreen(),
+                              ),
+                            );
                           },
                         ),
                       ],

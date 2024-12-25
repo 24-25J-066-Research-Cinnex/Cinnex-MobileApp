@@ -1,19 +1,49 @@
 import 'package:cinnex_mobile/Dashboard/dashboard_screen.dart';
-import 'package:cinnex_mobile/Price%20Forecast/price_forecast_screen.dart';
+import 'package:cinnex_mobile/Home/home_screen.dart';
+import 'package:cinnex_mobile/Home/language_selection_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
 import 'package:motion_tab_bar_v2/motion-tab-controller.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  // Default locale is English
+  Locale _currentLocale = const Locale('en');
+
+  void _changeLanguage(Locale locale) {
+    setState(() {
+      _currentLocale = locale;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Cinnex Mobile',
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales:[
+        Locale('en'), //English
+        Locale('si'), //Sinhala
+      ],
+        locale: _currentLocale,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -29,6 +59,24 @@ class MyApp extends StatelessWidget {
             color: Colors.white,
             fontFamily: 'Poppins',
           ),
+          titleMedium: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontFamily: 'Poppins',
+          ),
+          titleSmall: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontFamily: 'Poppins',
+          ),
+          bodyLarge: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+            fontFamily: 'Poppins',
+          ),
           bodyMedium: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -41,15 +89,35 @@ class MyApp extends StatelessWidget {
             color: Colors.black,
             fontFamily: 'Poppins',
           ),
+          headlineMedium: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+            fontFamily: 'Poppins',
+          ),
+          headlineSmall: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.normal,
+            color: Colors.black,
+            fontFamily: 'Poppins',
+          ),
+
         ),
       ),
-      home: const MainLayout(),
+      //home: MainLayout(),
+      //home: LanguageSelectionScreen(onLanguageChange: onLanguageChange)
+      home : LanguageSelectionScreen(onLanguageChange: (Locale locale) {
+        _changeLanguage(locale); // Update the selected language
+      },
+      ),
     );
   }
 }
 
 class MainLayout extends StatefulWidget {
-  const MainLayout({super.key});
+  final Locale locale;
+
+  const MainLayout({super.key, required this.locale});
 
   @override
   State<MainLayout> createState() => _MainLayoutState();
@@ -57,6 +125,7 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
   MotionTabBarController? _motionTabBarController;
+  late Locale _currentLocale;
 
   @override
   void initState() {
@@ -66,8 +135,14 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
       length: 4,
       vsync: this,
     );
+    _currentLocale = widget.locale;
   }
 
+  void _changeLanguage(Locale locale) {
+    setState(() {
+      _currentLocale = locale;
+    });
+  }
   @override
   void dispose() {
     super.dispose();
@@ -80,9 +155,14 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
       // Bottom Navigation Bar
       bottomNavigationBar: MotionTabBar(
         controller: _motionTabBarController,
-        initialSelectedTab: "Home",
+        initialSelectedTab: AppLocalizations.of(context)!.home,
         useSafeArea: true,
-        labels: const ["Home", "Dashboard", "Profile", "Settings"],
+        labels: [
+          AppLocalizations.of(context)!.home,
+          AppLocalizations.of(context)!.dashboard,
+          AppLocalizations.of(context)!.profile,
+          AppLocalizations.of(context)!.settings,
+        ],
         icons: const [
           Icons.home,
           Icons.dashboard,
@@ -108,13 +188,14 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
           });
         },
       ),
+
       // Body Content
       body: TabBarView(
         physics: const NeverScrollableScrollPhysics(),
         controller: _motionTabBarController,
         children: <Widget>[
-          PriceForecastScreen(), // Home tab
-          DashboardScreen(),     // Dashboard tab
+          HomeScreen(), // Home tab
+          DashboardScreen(), // Dashboard tab
           MainPageContentComponent(
               title: "Profile", controller: _motionTabBarController!),
           MainPageContentComponent(
@@ -143,7 +224,7 @@ class MainPageContentComponent extends StatelessWidget {
         children: [
           Text(title,
               style:
-              const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 50),
           const SizedBox(height: 10),
         ],
