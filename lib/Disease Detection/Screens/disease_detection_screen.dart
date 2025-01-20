@@ -1,7 +1,10 @@
+import 'dart:io';
+import 'package:cinnex_mobile/Shared/Widget/camera_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
-import '../Shared/Widget/curved_appbar.dart';
+import '../../Shared/Widget/curved_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:image_picker/image_picker.dart';
 
 class DiseaseDetectionScreen extends StatefulWidget {
   const DiseaseDetectionScreen({super.key});
@@ -10,6 +13,32 @@ class DiseaseDetectionScreen extends StatefulWidget {
 }
 
 class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
+  File? _image; // Holds the selected image
+
+  final ImagePicker _picker = ImagePicker();
+
+  // Function to pick an image from the gallery
+  Future<void> _pickImageFromGallery() async {
+    final XFile? pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
+
+  // Function to capture an image using the camera
+  Future<void> _captureImageWithCamera() async {
+    final XFile? capturedFile =
+        await _picker.pickImage(source: ImageSource.camera);
+    if (capturedFile != null) {
+      setState(() {
+        _image = File(capturedFile.path);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -68,6 +97,7 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                         GestureDetector(
                           onTap: () {
                             // Add file picker logic here
+                            _pickImageFromGallery(); // Open gallery to pick an image
                           },
                           child: Container(
                             height: 200,
@@ -78,19 +108,31 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                               borderRadius: BorderRadius.circular(12),
                               color: Colors.grey[100],
                             ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.image,
-                                    size: 50, color: colorScheme.primary),
-                                const SizedBox(height: 8),
-                                Text(
-                                  AppLocalizations.of(context)!
-                                      .cinnamon_diseases_button0,
-                                  style: textTheme.bodySmall,
-                                ),
-                              ],
-                            ),
+                            child: _image != null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.file(
+                                      _image!,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                                : Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.image,
+                                          size: 50, color: colorScheme.primary),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        AppLocalizations.of(context)!
+                                            .cinnamon_diseases_button0,
+                                        style: theme.textTheme.bodyMedium!
+                                            .copyWith(
+                                          color: colorScheme.primary,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -101,23 +143,12 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        ElevatedButton.icon(
+                        CameraButton(
+                          text: AppLocalizations.of(context)!
+                              .cinnamon_diseases_button1,
                           onPressed: () {
-                            // Add camera functionality here
+                            _captureImageWithCamera(); // Open camera to capture an image
                           },
-                          icon: const Icon(Icons.camera_alt_outlined),
-                          label: Text(
-                              AppLocalizations.of(context)!
-                                  .cinnamon_diseases_button1,
-                              style: textTheme.bodySmall),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.green[100],
-                            foregroundColor: colorScheme.primary,
-                            side: BorderSide(
-                                color: colorScheme.primary, width: 3),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 15),
-                          ),
                         ),
                         // Cinnamon Grade Dropdown
 

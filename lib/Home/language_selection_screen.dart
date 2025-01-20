@@ -45,37 +45,67 @@ class LanguageSelectionScreen extends StatelessWidget {
                 style: textTheme.bodyMedium,
               ),
               const SizedBox(height: 30),
-              CustomButton(
+              LanguageButton(
                 text: "English",
-                onPressed: () {
-                  _onLanguageChange(context, const Locale('en')); // Change to English
-                },
+                locale: const Locale('en'),
+                onPressed: (locale) => _onLanguageChange(context, locale),
               ),
               const SizedBox(height: 20),
-              Row(
-                children: [
-                  const Expanded(child: Divider(color: Colors.grey)),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(
-                      'OR',
-                      style: textTheme.bodySmall,
-                    ),
-                  ),
-                  const Expanded(child: Divider(color: Colors.grey)),
-                ],
-              ),
+              const OrDivider(),
               const SizedBox(height: 20),
-              CustomButton(
+              LanguageButton(
                 text: "සිංහල",
-                onPressed: () {
-                  _onLanguageChange(context, const Locale('si')); // Change to Sinhala
-                },
+                locale: const Locale('si'),
+                onPressed: (locale) => _onLanguageChange(context, locale),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class LanguageButton extends StatelessWidget {
+  final String text;
+  final Locale locale;
+  final void Function(Locale) onPressed;
+
+  const LanguageButton({
+    super.key,
+    required this.text,
+    required this.locale,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomButton(
+      text: text,
+      onPressed: () => onPressed(locale),
+    );
+  }
+}
+
+class OrDivider extends StatelessWidget {
+  const OrDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Row(
+      children: [
+        const Expanded(child: Divider(color: Colors.grey)),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            'OR',
+            style: textTheme.bodySmall,
+          ),
+        ),
+        const Expanded(child: Divider(color: Colors.grey)),
+      ],
     );
   }
 }

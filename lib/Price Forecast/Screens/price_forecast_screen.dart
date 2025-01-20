@@ -1,11 +1,13 @@
+import 'package:cinnex_mobile/Price%20Forecast/screens/price_forecast_response.dart';
 import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import '../Shared/Widget/curved_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:logger/logger.dart';
+import '../../Shared/Widget/curved_appbar.dart';
+import '../Services/forecast_service.dart';
 
 class PriceForecastScreen extends StatefulWidget {
   const PriceForecastScreen({super.key});
@@ -30,8 +32,31 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
   ];
 
   String? selectedGrade;
-  String? selectedRegion;
+  String? selectedLocation;
   String? selectedDate; // Holds the selected date.
+
+  ///function to call forecast service
+  void getForecast() async {
+    final location = selectedLocation;
+    final grade = selectedGrade;
+    final forecastDate = selectedDate;
+
+    if (location != null && grade != null && forecastDate != null) {
+      try{
+        final forecast = await ForecastService.getForecast(location, grade, forecastDate);
+        logger.d('Forecast: $forecast');
+      }
+      catch (e) {
+        logger.e('Error getting forecast: $e');
+      }
+     }
+    else {
+      logger.e('Please select all required fields');
+    }
+
+    // Call the forecast service
+    // ForecastService.getForecast(selectedRegion, selectedGrade, selectedDate);
+  }
 
   /// Function to open the date picker and update the selected date.
   void _showDatePicker() async {
@@ -192,10 +217,10 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                                       ),
                                     ))
                                 .toList(),
-                            value: selectedRegion,
+                            value: selectedLocation,
                             onChanged: (value) {
                               setState(() {
-                                selectedRegion = value;
+                                selectedLocation = value;
                               });
                             },
                             buttonStyleData: ButtonStyleData(
@@ -216,14 +241,25 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                           text: AppLocalizations.of(context)!
                               .price_forecast_button,
                           onPressed: () {
+                            getPrice();
+                            //getForecast();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                const PriceForecastResponseScreen(),
+                              ),
+                            );
+
                             if (selectedGrade != null &&
-                                selectedRegion != null &&
+                                selectedLocation != null &&
                                 selectedDate != null) {
                               // Add prediction logic here
                               logger.d(
-                                  "Selected Date: $selectedDate, Grade: $selectedGrade, Region: $selectedRegion");
+                                  "Selected Date: $selectedDate, Grade: $selectedGrade, Location: $selectedLocation");
                             } else {}
                           },
+
                         ),
                         const Spacer(), // Push the button to the bottom
                       ],
