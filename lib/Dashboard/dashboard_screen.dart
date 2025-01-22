@@ -1,4 +1,6 @@
+import 'package:cinnex_mobile/Cinnamon%20Grades/Screens/cinnamon_grades_landing_screen.dart';
 import 'package:cinnex_mobile/Cinnamon%20Grades/Screens/cinnamon_grades_screen.dart';
+import 'package:cinnex_mobile/Cinnamon%20Species/Screens/cinnamon_species_landing_screen.dart';
 import 'package:cinnex_mobile/Cinnamon%20Species/Screens/cinnamon_species_screen.dart';
 import 'package:cinnex_mobile/Shared/Widget/curved_appbar.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +71,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    const CinnomonGradesScreen(),
+                                    const CinnomonGradesLandingScreen(),
                               ),
                             );
                           },
@@ -83,7 +85,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    const CinnamonSpeciesScreen(),
+                                    const CinnamonSpeciesLandingScreen(),
                               ),
                             );
                           },

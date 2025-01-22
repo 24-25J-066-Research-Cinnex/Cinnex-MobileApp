@@ -1,19 +1,20 @@
+import 'package:cinnex_mobile/Cinnamon%20Species/Screens/cinnamon_species_screen.dart';
+import 'package:cinnex_mobile/Price%20Forecast/screens/price_forecast_screen.dart';
 import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import '../../Shared/Widget/curved_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:cinnex_mobile/Disease Detection/screens/disease_detection_screen.dart';
 
-class DiseaseDetectionLandingScreen extends StatefulWidget {
-  const DiseaseDetectionLandingScreen({super.key});
+class CinnamonSpeciesLandingScreen extends StatefulWidget {
+  const CinnamonSpeciesLandingScreen({super.key});
 
   @override
-  State<DiseaseDetectionLandingScreen> createState() =>
-      _PriceForecastLandingScreenState();
+  State<CinnamonSpeciesLandingScreen> createState() =>
+      _CinnamonSpeciesLandingScreenState();
 }
 
-class _PriceForecastLandingScreenState
-    extends State<DiseaseDetectionLandingScreen> {
+class _CinnamonSpeciesLandingScreenState
+    extends State<CinnamonSpeciesLandingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +22,7 @@ class _PriceForecastLandingScreenState
         children: [
           // Curved AppBar Background
           CurvedAppBar(
-            title: AppLocalizations.of(context)!.cinnamon_diseases,
+            title: AppLocalizations.of(context)!.cinnamon_species,
             trailingIcon: Icons.notifications,
             onTrailingIconPressed: null, // Add action if needed
           ),
@@ -52,7 +53,7 @@ class _PriceForecastLandingScreenState
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     AppLocalizations.of(context)!
-                        .cinnamon_diseases_landing_content1,
+                        .price_forecast_landing_content1,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -67,7 +68,7 @@ class _PriceForecastLandingScreenState
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     AppLocalizations.of(context)!
-                        .cinnamon_diseases_landing_content2,
+                        .price_forecast_landing_content2,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.normal,
@@ -91,8 +92,9 @@ class _PriceForecastLandingScreenState
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      const DiseaseDetectionScreen()),
+                                builder: (context) =>
+                                const CinnomonSpeciesScreen(),
+                              ),
                             );
                           },
                         ),
