@@ -34,6 +34,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
   String? selectedGrade;
   String? selectedLocation;
   String? selectedDate; // Holds the selected date.
+  double fontSize = 16.0;
 
   ///function to call forecast service
   void getForecast() async {
@@ -42,15 +43,14 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
     final forecastDate = selectedDate;
 
     if (location != null && grade != null && forecastDate != null) {
-      try{
-        final forecast = await ForecastService.getForecast(location, grade, forecastDate);
+      try {
+        final forecast =
+            await ForecastService.getForecast(location, grade, forecastDate);
         logger.d('Forecast: $forecast');
-      }
-      catch (e) {
+      } catch (e) {
         logger.e('Error getting forecast: $e');
       }
-     }
-    else {
+    } else {
       logger.e('Please select all required fields');
     }
 
@@ -70,6 +70,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
               if (args.value is DateTime) {
                 setState(() {
                   selectedDate = DateFormat('yyyy-MM-dd').format(args.value);
+                  fontSize = 16.0;
                   Navigator.pop(
                       context); // Close the date picker after selection
                 });
@@ -234,7 +235,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 40),
 
                         // Predict Market Price Button
                         CustomButton(
@@ -247,7 +248,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                const PriceForecastResponseScreen(),
+                                    const PriceForecastResponseScreen(),
                               ),
                             );
 
@@ -259,7 +260,6 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                                   "Selected Date: $selectedDate, Grade: $selectedGrade, Location: $selectedLocation");
                             } else {}
                           },
-
                         ),
                         const Spacer(), // Push the button to the bottom
                       ],

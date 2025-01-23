@@ -55,7 +55,7 @@ class _CinnomonGradesLandingScreenState
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     AppLocalizations.of(context)!
-                        .price_forecast_landing_content1,
+                        .cinnamon_grades_content,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ class _CinnomonGradesLandingScreenState
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     AppLocalizations.of(context)!
-                        .price_forecast_landing_content2,
+                        .cinnamon_grades_landing_content2,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.normal,

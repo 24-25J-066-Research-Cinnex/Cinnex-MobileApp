@@ -6,11 +6,19 @@ import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
 import 'package:motion_tab_bar_v2/motion-tab-controller.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:provider/provider.dart';
+import 'package:cinnex_mobile/Settings/locale_provider.dart';
 import 'Settings/setting_screen.dart';
+import 'Storage/Screens/storage_screen.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp( MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => LocaleProvider()),
+    ],
+    child: const MyApp(),
+  ),);
 }
 
 class MyApp extends StatefulWidget {
@@ -32,6 +40,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LocaleProvider>(context);
     return MaterialApp(
       title: 'Cinnex Mobile',
       localizationsDelegates: [
@@ -44,6 +53,7 @@ class _MyAppState extends State<MyApp> {
         Locale('en'), //English
         Locale('si'), //Sinhala
       ],
+      //locale: provider.locale,
       locale: _currentLocale,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -126,6 +136,7 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
   MotionTabBarController? _motionTabBarController;
+  Locale _currentLocale = const Locale('en');
 
   @override
   void initState() {
@@ -143,6 +154,12 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
     _motionTabBarController!.dispose();
   }
 
+  void _changeLanguage(Locale locale) {
+    setState(() {
+      _currentLocale = locale;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,7 +171,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
         labels: [
           AppLocalizations.of(context)!.home,
           AppLocalizations.of(context)!.dashboard,
-          AppLocalizations.of(context)!.profile,
+          AppLocalizations.of(context)!.storage,
           AppLocalizations.of(context)!.settings,
         ],
         icons: const [
@@ -190,8 +207,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
         children: <Widget>[
           HomeScreen(), // Home tab
           DashboardScreen(), // Dashboard tab
-          MainPageContentComponent(
-              title: "Profile", controller: _motionTabBarController!),
+          FileStoragePage(), // Profile tab
           SettingsPage(),
         ],
       ),
