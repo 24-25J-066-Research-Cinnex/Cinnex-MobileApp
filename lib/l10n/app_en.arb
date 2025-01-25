@@ -17,6 +17,8 @@
   "price_forecast_grade": "Select cinnamon Grade",
   "price_forecast_region": "Select Your Region",
   "price_forecast_button": "Predict Market Price",
+  "predicted_price": "Predicted Price",
+  "predicted_price2": "Price for 1 Kilo Gram of Cinnamon in\nSri Lankan Rupees",
 
   "cinnamon_diseases": "Diseases Detection",
 

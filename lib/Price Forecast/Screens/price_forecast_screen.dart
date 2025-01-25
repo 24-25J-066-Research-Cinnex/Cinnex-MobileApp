@@ -37,25 +37,24 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
   double fontSize = 16.0;
 
   ///function to call forecast service
-  void getForecast() async {
+  Future<Map<String, dynamic>> getForecast() async {
     final location = selectedLocation;
     final grade = selectedGrade;
     final forecastDate = selectedDate;
 
     if (location != null && grade != null && forecastDate != null) {
       try {
-        final forecast =
-            await ForecastService.getForecast(location, grade, forecastDate);
+        final forecast = await ForecastService.getForecast(location, grade, forecastDate);
         logger.d('Forecast: $forecast');
+        return forecast; // Return the forecast data
       } catch (e) {
         logger.e('Error getting forecast: $e');
+        rethrow;
       }
     } else {
       logger.e('Please select all required fields');
+      throw Exception('Please select all required fields');
     }
-
-    // Call the forecast service
-    // ForecastService.getForecast(selectedRegion, selectedGrade, selectedDate);
   }
 
   /// Function to open the date picker and update the selected date.
@@ -239,28 +238,24 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
 
                         // Predict Market Price Button
                         CustomButton(
-                          text: AppLocalizations.of(context)!
-                              .price_forecast_button,
-                          onPressed: () {
-                            getPrice();
-                            //getForecast();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const PriceForecastResponseScreen(),
-                              ),
-                            );
-
-                            if (selectedGrade != null &&
-                                selectedLocation != null &&
-                                selectedDate != null) {
-                              // Add prediction logic here
-                              logger.d(
-                                  "Selected Date: $selectedDate, Grade: $selectedGrade, Location: $selectedLocation");
-                            } else {}
+                          text: AppLocalizations.of(context)!.price_forecast_button,
+                          onPressed: () async {
+                            try {
+                              final forecastData = await getForecast();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PriceForecastResponseScreen(
+                                    forecast: forecastData, // Pass the required forecastData
+                                  ),
+                                ),
+                              );
+                            } catch (e) {
+                              logger.e('Error getting forecast: $e');
+                            }
                           },
                         ),
+
                         const Spacer(), // Push the button to the bottom
                       ],
                     ),

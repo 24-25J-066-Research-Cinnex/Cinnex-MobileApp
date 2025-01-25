@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:logger/logger.dart';
 import '../../Shared/Widget/curved_appbar.dart';
 
 class PriceForecastResponseScreen extends StatelessWidget {
-  const PriceForecastResponseScreen({super.key});
+  static final Logger _logger = Logger();
+
+  final Map<String, dynamic> forecast;
+  const PriceForecastResponseScreen({
+    super.key,
+    required this.forecast, // Required named parameter
+  });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
+
+    _logger.d('LKR ${forecast['predicted_price']}');
 
     return Scaffold(
       body: Stack(
@@ -53,8 +62,8 @@ class PriceForecastResponseScreen extends StatelessWidget {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey,
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
+                              blurRadius: 5,
+                              offset: const Offset(0, 8),
                             ),
                           ],
                         ),
@@ -75,47 +84,30 @@ class PriceForecastResponseScreen extends StatelessWidget {
                                     ),
                                   ),
                                   child: Text(
-                                    'LKR',
+                                    AppLocalizations.of(context)!
+                                        .predicted_price,
                                     style: textTheme.bodyMedium?.copyWith(
                                       color: Colors.white,
                                     ),
                                   ),
                                 ),
                                 const SizedBox(width: 8),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    // Switch to USD
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.grey[300],
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    'USD',
-                                    style: textTheme.bodyMedium,
-                                  ),
-                                ),
                               ],
                             ),
                             const SizedBox(height: 16),
 
                             // Price Display
+
                             Text(
-                              'LKR 3800.00',
-                              style: textTheme.headlineMedium?.copyWith(
+                              'LKR ${forecast['predicted_price']}', // Display price
+                              style: textTheme.titleLarge?.copyWith(
                                 fontWeight: FontWeight.bold,
+                                color: colorScheme.primary,
                               ),
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              'Price for 1 Kilo Gram of Cinnamon in',
-                              style: textTheme.bodyMedium,
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              'Sri Lankan Rupee',
+                              AppLocalizations.of(context)!.predicted_price2,
                               style: textTheme.bodyMedium,
                               textAlign: TextAlign.center,
                             ),
