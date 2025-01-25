@@ -109,9 +109,10 @@ class _MyAppState extends State<MyApp> {
           headlineSmall: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.normal,
-            color: Colors.black,
+            color: Colors.white,
             fontFamily: 'Poppins',
           ),
+
         ),
       ),
       //home: MainLayout(),

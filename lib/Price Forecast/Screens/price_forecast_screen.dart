@@ -86,7 +86,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    //final colorScheme = theme.colorScheme; // Access colors
+    final colorScheme = theme.colorScheme; // Access colors
     final textTheme = theme.textTheme; // Access text styles
 
     return Scaffold(
@@ -240,18 +240,33 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                         CustomButton(
                           text: AppLocalizations.of(context)!.price_forecast_button,
                           onPressed: () async {
+                            if (selectedDate == null || selectedGrade == null || selectedLocation == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: colorScheme.primary,
+                                    content: Text(
+                                      AppLocalizations.of(context)!.predicted_snack_bar,
+                                      style: textTheme.headlineSmall,
+
+                                    ),
+                                  ),
+                              );
+                            }else{
                             try {
                               final forecastData = await getForecast();
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => PriceForecastResponseScreen(
-                                    forecast: forecastData, // Pass the required forecastData
+                                    forecast: forecastData,
+                                    // Pass the required forecastData
                                   ),
                                 ),
                               );
-                            } catch (e) {
+                            }
+                            catch (e) {
                               logger.e('Error getting forecast: $e');
+                            }
                             }
                           },
                         ),

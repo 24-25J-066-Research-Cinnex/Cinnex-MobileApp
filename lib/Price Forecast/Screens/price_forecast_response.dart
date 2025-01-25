@@ -7,6 +7,7 @@ class PriceForecastResponseScreen extends StatelessWidget {
   static final Logger _logger = Logger();
 
   final Map<String, dynamic> forecast;
+
   const PriceForecastResponseScreen({
     super.key,
     required this.forecast, // Required named parameter
@@ -106,6 +107,12 @@ class PriceForecastResponseScreen extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 8),
+                            Text(
+                              'selectedLocation', // Display location
+                              style: textTheme.bodyMedium,
+                              textAlign: TextAlign.center,
+                            ),
+
                             Text(
                               AppLocalizations.of(context)!.predicted_price2,
                               style: textTheme.bodyMedium,
