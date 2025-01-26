@@ -1,5 +1,3 @@
-import 'package:cinnex_mobile/Cinnamon%20Species/Screens/cinnamon_species_screen.dart';
-import 'package:cinnex_mobile/Price%20Forecast/screens/price_forecast_screen.dart';
 import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import '../../Shared/Widget/curved_appbar.dart';
@@ -55,7 +53,7 @@ class _CinnomonGradesLandingScreenState
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     AppLocalizations.of(context)!
-                        .price_forecast_landing_content1,
+                        .cinnamon_grades_content,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -70,7 +68,7 @@ class _CinnomonGradesLandingScreenState
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     AppLocalizations.of(context)!
-                        .price_forecast_landing_content2,
+                        .cinnamon_grades_landing_content2,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.normal,

@@ -1,10 +1,14 @@
 import 'dart:io';
+import 'package:cinnex_mobile/Disease%20Detection/Services/disease_service.dart';
 import 'package:cinnex_mobile/Shared/Widget/camera_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
+import 'package:logger/logger.dart';
 import '../../Shared/Widget/curved_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
+
+import 'disease_detection_response.dart';
 
 class DiseaseDetectionScreen extends StatefulWidget {
   const DiseaseDetectionScreen({super.key});
@@ -14,8 +18,26 @@ class DiseaseDetectionScreen extends StatefulWidget {
 
 class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
   File? _image; // Holds the selected image
-
+  static final Logger _logger = Logger();
   final ImagePicker _picker = ImagePicker();
+
+  //function to call the disease detection service
+  Future<Map<String, dynamic>> detectDisease() async {
+    if (_image != null) {
+      // Add logic to detect disease
+      try {
+        final detect = await DiseaseService.getDisease(_image!);
+        _logger.d('API Response: $detect');
+        return detect;
+      } catch (e) {
+        _logger.e('Error detecting disease: $e');
+        rethrow;
+      }
+    } else {
+      _logger.e('Please select all required fields');
+      throw Exception('Please select all required fields');
+    }
+  }
 
   // Function to pick an image from the gallery
   Future<void> _pickImageFromGallery() async {
@@ -162,7 +184,34 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                         CustomButton(
                           text: AppLocalizations.of(context)!
                               .cinnamon_diseases_button2,
-                          onPressed: () {},
+                          onPressed: () async {
+                            // Add logic to detect disease
+                            if (_image == null) {
+                              // Add logic to detect disease
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    'Please select an image to detect disease',
+                                  ),
+                                ),
+                              );
+                            } else {
+                              try {
+                                final detectResponse = await detectDisease();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          DiseaseDetectionResponseScreen(
+                                            detect: detectResponse,
+                                            image: _image!,
+                                          )),
+                                );
+                              } catch (e) {
+                                _logger.e('Error getting forecast: $e');
+                              }
+                            }
+                          },
                         ),
                         const Spacer(), // Push the button to the bottom
                       ],

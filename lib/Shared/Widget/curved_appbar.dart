@@ -41,7 +41,7 @@ class CurvedAppBar extends StatelessWidget {
                     Text(
                       title,
                       style:
-                          textTheme.titleLarge, // Use titleLarge from the theme
+                          textTheme.titleMedium, // Use titleLarge from the theme
                     ),
                     if (trailingIcon != null)
                       IconButton(

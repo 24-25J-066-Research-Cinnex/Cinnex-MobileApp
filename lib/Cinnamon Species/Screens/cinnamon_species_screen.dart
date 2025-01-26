@@ -80,7 +80,7 @@ class _CinnomonSpeciesScreenState extends State<CinnomonSpeciesScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    AppLocalizations.of(context)!.cinnamon_diseases_content,
+                    AppLocalizations.of(context)!.cinnamon_species_landing_content1,
                     style: textTheme.headlineMedium,
                   ),
                 ),
@@ -161,7 +161,7 @@ class _CinnomonSpeciesScreenState extends State<CinnomonSpeciesScreen> {
                         // Predict Market Price Button
                         CustomButton(
                           text: AppLocalizations.of(context)!
-                              .cinnamon_diseases_button2,
+                              .cinnamon_species_button2,
                           onPressed: () {},
                         ),
                         const Spacer(), // Push the button to the bottom

@@ -50,7 +50,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
         children: [
           // Curved AppBar Background
           CurvedAppBar(
-            title: AppLocalizations.of(context)!.cinnamon_diseases,
+            title: AppLocalizations.of(context)!.cinnamon_grades,
             trailingIcon: Icons.notifications,
             onTrailingIconPressed: null, // Add action if needed
           ),
@@ -80,7 +80,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    AppLocalizations.of(context)!.cinnamon_diseases_content,
+                    AppLocalizations.of(context)!.cinnamon_grades_landing_content1,
                     style: textTheme.headlineMedium,
                   ),
                 ),
@@ -161,7 +161,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                         // Predict Market Price Button
                         CustomButton(
                           text: AppLocalizations.of(context)!
-                              .cinnamon_diseases_button2,
+                              .cinnamon_grades_button2,
                           onPressed: () {},
                         ),
                         const Spacer(), // Push the button to the bottom

@@ -34,28 +34,27 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
   String? selectedGrade;
   String? selectedLocation;
   String? selectedDate; // Holds the selected date.
+  double fontSize = 16.0;
 
   ///function to call forecast service
-  void getForecast() async {
+  Future<Map<String, dynamic>> getForecast() async {
     final location = selectedLocation;
     final grade = selectedGrade;
     final forecastDate = selectedDate;
 
     if (location != null && grade != null && forecastDate != null) {
-      try{
+      try {
         final forecast = await ForecastService.getForecast(location, grade, forecastDate);
         logger.d('Forecast: $forecast');
-      }
-      catch (e) {
+        return forecast; // Return the forecast data
+      } catch (e) {
         logger.e('Error getting forecast: $e');
+        rethrow;
       }
-     }
-    else {
+    } else {
       logger.e('Please select all required fields');
+      throw Exception('Please select all required fields');
     }
-
-    // Call the forecast service
-    // ForecastService.getForecast(selectedRegion, selectedGrade, selectedDate);
   }
 
   /// Function to open the date picker and update the selected date.
@@ -70,6 +69,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
               if (args.value is DateTime) {
                 setState(() {
                   selectedDate = DateFormat('yyyy-MM-dd').format(args.value);
+                  fontSize = 16.0;
                   Navigator.pop(
                       context); // Close the date picker after selection
                 });
@@ -86,7 +86,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    //final colorScheme = theme.colorScheme; // Access colors
+    final colorScheme = theme.colorScheme; // Access colors
     final textTheme = theme.textTheme; // Access text styles
 
     return Scaffold(
@@ -234,33 +234,43 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 40),
 
                         // Predict Market Price Button
                         CustomButton(
-                          text: AppLocalizations.of(context)!
-                              .price_forecast_button,
-                          onPressed: () {
-                            getPrice();
-                            //getForecast();
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                const PriceForecastResponseScreen(),
-                              ),
-                            );
+                          text: AppLocalizations.of(context)!.price_forecast_button,
+                          onPressed: () async {
+                            if (selectedDate == null || selectedGrade == null || selectedLocation == null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: colorScheme.primary,
+                                    content: Text(
+                                      AppLocalizations.of(context)!.predicted_snack_bar,
+                                      style: textTheme.headlineSmall,
 
-                            if (selectedGrade != null &&
-                                selectedLocation != null &&
-                                selectedDate != null) {
-                              // Add prediction logic here
-                              logger.d(
-                                  "Selected Date: $selectedDate, Grade: $selectedGrade, Location: $selectedLocation");
-                            } else {}
+                                    ),
+                                  ),
+                              );
+                            }else{
+                            try {
+                              final forecastData = await getForecast();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PriceForecastResponseScreen(
+                                    forecast: forecastData,
+                                    // Pass the required forecastData
+                                  ),
+                                ),
+                              );
+                            }
+                            catch (e) {
+                              logger.e('Error getting forecast: $e');
+                            }
+                            }
                           },
-
                         ),
+
                         const Spacer(), // Push the button to the bottom
                       ],
                     ),
