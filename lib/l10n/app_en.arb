@@ -37,7 +37,7 @@
 
 
 
-  "cinnamon_species": "Species of Cinnamon",
+  "cinnamon_species": "Cinnamon Species",
   "cinnamon_species_landing_content1": "To accurately identify cinnamon species, ensure clear and detailed images of the plant parts such as leaves, bark, or buds are provided.",
   "cinnamon_species_landing_content2": "Capture Image: Take high-quality photos of the cinnamon plant parts with proper focus and lighting.\nUpload Photo to App: Submit the image to the app’s species detection feature.\nReview Analysis: Check results and identify the proposed species.\nConfirm Characteristics: Compare the app's output with known characteristics for validation.",
   "cinnamon_species_content": "Please upload an image or take a photo of your cinnamon plant.",
@@ -48,7 +48,7 @@
 
 
 
-  "cinnamon_grades": "Grades of Cinnamon",
+  "cinnamon_grades": "Cinnamon Grades",
   "cinnamon_grades_landing_content1": "To assess the grade of cinnamon, provide high-resolution images focusing on the bark or quills of the cinnamon.",
   "cinnamon_grades_landing_content2": "Capture Image: Take close-up photos of the cinnamon bark or quills, ensuring proper lighting and sharp focus.\nUpload Photo to App: Submit the image to the app’s grade detection feature.\nReview Grade: View the predicted grade and details of the cinnamon quality.\nTake Action: Use the grading results to make informed decisions about processing or selling.",
   "cinnamon_grades_content": "Please upload an image or take a photo of your cinnamon bark or quills.",

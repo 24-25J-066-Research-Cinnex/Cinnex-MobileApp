@@ -36,6 +36,12 @@ class LanguageSelectionScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset(
+                'assets/images/cinneX.png',
+                height: 200,
+                width: 200,
+              ),
+              const SizedBox(height: 40),
               Text(
                 "Select Your Preferred Language",
                 style: textTheme.bodyMedium,

@@ -73,6 +73,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/cinnex App logo.png
+    - assets/images/cinneX.png
     - assets/images/Price Forecast Icon.png
     - assets/images/Disease Detection Icon.png
     - assets/images/Cinnamon Grade Icon.png

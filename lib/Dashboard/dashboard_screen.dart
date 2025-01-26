@@ -48,7 +48,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       children: [
                         FeatureCard(
                           title: appLocalizations.price_forecast,
-                          imagePath: 'assets/images/Price Forecast Icon.png',
+                          imagePath: 'assets/images/forecast.png',
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             Navigator.push(
@@ -62,7 +62,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         FeatureCard(
                           title: appLocalizations.cinnamon_grades,
-                          imagePath: 'assets/images/Cinnamon Grade Icon.png',
+                          imagePath: 'assets/images/grade.png',
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             Navigator.push(
@@ -76,7 +76,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         FeatureCard(
                           title: appLocalizations.cinnamon_species,
-                          imagePath: 'assets/images/Cinnamon Species Icon.png',
+                          imagePath: 'assets/images/spec.png',
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             Navigator.push(
@@ -90,7 +90,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ),
                         FeatureCard(
                           title: appLocalizations.cinnamon_diseases,
-                          imagePath: 'assets/images/Disease Detection Icon.png',
+                          imagePath: 'assets/images/disease.png',
                           color: Theme.of(context).colorScheme.primary,
                           onTap: () {
                             Navigator.push(
