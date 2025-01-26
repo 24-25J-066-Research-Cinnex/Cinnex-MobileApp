@@ -43,9 +43,7 @@ dependencies:
   flutter_native_splash: ^2.4.3
   awesome_dialog: ^3.2.1
   provider: ^6.1.2
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  smooth_page_indicator: ^1.1.0
   cupertino_icons: ^1.0.8
   intl: any
 
@@ -79,6 +77,15 @@ flutter:
     - assets/images/Disease Detection Icon.png
     - assets/images/Cinnamon Grade Icon.png
     - assets/images/Cinnamon Species Icon.png
+    - assets/gif/onboarding1.gif
+    - assets/gif/onboarding2.gif
+    - assets/gif/onboarding3.gif
+    - assets/gif/onboarding4.gif
+    - assets/gif/forecast.gif
+    - assets/images/disease.png
+    - assets/images/forecast.png
+    - assets/images/grade.png
+    - assets/images/spec.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

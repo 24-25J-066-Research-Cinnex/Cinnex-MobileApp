@@ -6,6 +6,9 @@
     "profile": "Profile",
     "settings": "Settings",
     "storage": "storage",
+  "skip": "skip",
+    "next": "next",
+  "get_started": "Get Started",
   "select_language": "Select Language",
 
   "price_forecast": "Price Forecast",

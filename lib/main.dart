@@ -115,7 +115,7 @@ class _MyAppState extends State<MyApp> {
 
         ),
       ),
-      //home: MainLayout(),
+      //home: const OnboardingView(),
       //home: LanguageSelectionScreen(onLanguageChange: onLanguageChange)
       home: LanguageSelectionScreen(
         onLanguageChange: (Locale locale) {
