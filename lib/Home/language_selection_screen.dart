@@ -1,7 +1,8 @@
 import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
 import 'package:flutter/material.dart';
 
-import '../main.dart';
+import '../Onboarding/onboarding_view.dart';
+
 
 class LanguageSelectionScreen extends StatelessWidget {
   final Function(Locale) onLanguageChange;
@@ -13,7 +14,7 @@ class LanguageSelectionScreen extends StatelessWidget {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => MainLayout(locale: locale),
+        builder: (context) => OnboardingView(locale: locale),
       ),
     );
   }
