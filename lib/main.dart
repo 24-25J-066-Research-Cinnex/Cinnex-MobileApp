@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<LocaleProvider>(context);
+    //final provider = Provider.of<LocaleProvider>(context);
     return MaterialApp(
       title: 'Cinnex Mobile',
       localizationsDelegates: [
@@ -137,7 +137,7 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
   MotionTabBarController? _motionTabBarController;
-  Locale _currentLocale = const Locale('en');
+  //Locale _currentLocale = const Locale('en');
 
   @override
   void initState() {
@@ -153,12 +153,6 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
   void dispose() {
     super.dispose();
     _motionTabBarController!.dispose();
-  }
-
-  void _changeLanguage(Locale locale) {
-    setState(() {
-      _currentLocale = locale;
-    });
   }
 
   @override

@@ -10,8 +10,8 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
+    //final theme = Theme.of(context);
+    //final textTheme = theme.textTheme;
 
     final appLocalizations = AppLocalizations.of(context)!;
 

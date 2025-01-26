@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../Shared/Widget/curved_appbar.dart';
 
 class FileStoragePage extends StatelessWidget {
-  const FileStoragePage({Key? key}) : super(key: key);
+  const FileStoragePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +117,7 @@ class FileStoragePage extends StatelessWidget {
 class FileUploadPage extends StatelessWidget {
   final String folderName;
 
-  const FileUploadPage({required this.folderName, Key? key}) : super(key: key);
+  const FileUploadPage({required this.folderName, super.key});
 
   @override
   Widget build(BuildContext context) {

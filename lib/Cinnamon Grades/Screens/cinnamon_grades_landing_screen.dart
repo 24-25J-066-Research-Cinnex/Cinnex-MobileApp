@@ -1,5 +1,3 @@
-import 'package:cinnex_mobile/Cinnamon%20Species/Screens/cinnamon_species_screen.dart';
-import 'package:cinnex_mobile/Price%20Forecast/screens/price_forecast_screen.dart';
 import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
 import 'package:flutter/material.dart';
 import '../../Shared/Widget/curved_appbar.dart';

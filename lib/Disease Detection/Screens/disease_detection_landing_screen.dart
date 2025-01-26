@@ -9,10 +9,10 @@ class DiseaseDetectionLandingScreen extends StatefulWidget {
 
   @override
   State<DiseaseDetectionLandingScreen> createState() =>
-      _PriceForecastLandingScreenState();
+      _DiseaseDetectionLandingScreenState();
 }
 
-class _PriceForecastLandingScreenState
+class _DiseaseDetectionLandingScreenState
     extends State<DiseaseDetectionLandingScreen> {
   @override
   Widget build(BuildContext context) {
