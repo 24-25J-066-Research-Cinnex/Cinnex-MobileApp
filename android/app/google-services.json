@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "127435021638",
+    "project_id": "cinnex",
+    "storage_bucket": "cinnex.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127435021638:android:15e3ebd95a538f9ccf1947",
+        "android_client_info": {
+          "package_name": "com.example.cinnex_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAg1h3GAoJsqBzV8o5mJZsQCAkZsTf05Jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

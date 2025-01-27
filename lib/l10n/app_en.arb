@@ -1,11 +1,12 @@
 {
   "title": "Hello",
   "message": "Welcome to our app!",
-    "home": "Home",
+    "home": "Chat",
     "dashboard": "Dashboard",
     "profile": "Profile",
     "settings": "Settings",
     "storage": "storage",
+  "notification": "Notification",
   "skip": "skip",
     "next": "next",
   "get_started": "Get Started",
@@ -13,8 +14,9 @@
 
   "price_forecast": "Price Forecast",
   "price_forecast_continue": "Continue",
-  "price_forecast_landing_content1":"Here, you can get an exclusive price forecast for cinnamon, which provides a great insight for better price prediction. \n",
-  "price_forecast_landing_content2": "1.Select the Date: Choose the desired date for the price forecast. \n \n2.Enter Location: Provide the specific region or market where the cinnamon is being sold. \n \n3.Specify Cinnamon Grade: Input the grade or quality of the cinnamon accurately. \n \n4.Submit Data: Confirm all inputs and submit them in the app's price prediction feature.  \n\n5.Review Forecast: Analyze the predicted price for the selected date and location. \n \n6.Plan Accordingly: Use the forecast to make informed decisions on sales or purchases.",
+  "price_forecast_landing_content1": "Here, you can access an exclusive price forecast for cinnamon, offering valuable insights for better price prediction. This tool helps farmers, traders, and business owners make informed decisions, plan future investments, and optimize profits. By analyzing market trends and historical data, the forecast ensures accuracy and reliability, empowering you to stay ahead in the competitive cinnamon industry.",
+  "price_forecast_landing_content2":"Here, you can get an exclusive price forecast for cinnamon, which provides a great insight for better price prediction. \n",
+  "price_forecast_landing_content3": "1.Select the Date: Choose the desired date for the price forecast. \n \n2.Enter Location: Provide the specific region or market where the cinnamon is being sold. \n \n3.Specify Cinnamon Grade: Input the grade or quality of the cinnamon accurately. \n \n4.Submit Data: Confirm all inputs and submit them in the app's price prediction feature.  \n\n5.Review Forecast: Analyze the predicted price for the selected date and location. \n \n6.Plan Accordingly: Use the forecast to make informed decisions on sales or purchases.",
   "price_forecast_content": "Enter the required data to make a prediction",
   "price_forecast_date": "Select Prediction Date",
   "price_forecast_grade": "Select cinnamon Grade",
@@ -26,15 +28,14 @@
 
 
   "cinnamon_diseases": "Diseases Detection",
-
-  "cinnamon_diseases_landing_content1": "To accurately identify cinnamon plant diseases, include clear images in good lighting and promptly follow the recommended treatments.",
-  "cinnamon_diseases_landing_content2": "Capture Image: Take clear and close-up photos of leaves that show details of spots, discolorations, or damage.\nUpload Photo to App: Submit the image to the app’s disease detection feature.\nReview Diagnosis: Check results and identify the proposed disease.\nFollow Treatment: Apply recommended treatments promptly to control the disease",
-  "cinnamon_diseases_content": "Please upload a image or take a picture of your cinnamon leaf.",
+  "cinnamon_diseases_landing_content1": "To accurately identify diseases in cinnamon plants, ensure you upload clear and well-lit images of the affected leaves or plants. Early detection and accurate identification are crucial for effective disease management. Once a diagnosis is provided, promptly follow the recommended treatments to maintain plant health and optimize yields.",
+  "cinnamon_diseases_landing_content2": "1.Capture Image: Take clear and close-up photos of leaves, focusing on areas with visible spots, discoloration, or damage. Ensure good lighting and avoid blurry images for the best results.\n \n2.Upload Photo to App: Submit the image to the app’s disease detection feature. The AI system analyzes the photo to identify potential diseases.\n \n3.Review Diagnosis: Check the results to identify the proposed disease and learn about its symptoms, causes, and effects on the cinnamon plant.\n \n4.Follow Treatment: Apply the recommended treatments promptly to control the disease. Utilize preventive measures and monitor the plant regularly to prevent recurrence. For severe cases, consider consulting agricultural experts for additional guidance.",
+  "cinnamon_diseases_content": "Here, you can detect diseases on cinnamon leaves. Please upload a clear image or take a picture of a cinnamon leaf.",
   "cinnamon_diseases_button0": "Select file",
   "cinnamon_diseases_or": "Or",
   "cinnamon_diseases_button1": "Open Camera and take photo",
   "cinnamon_diseases_button2": "Predict the Disease",
-
+"cinnamon_diseases_snack_bar": "Please upload a clear photo to identify the disease.",
 
 
   "cinnamon_species": "Cinnamon Species",

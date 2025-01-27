@@ -81,7 +81,10 @@ class _CinnomonSpeciesScreenState extends State<CinnomonSpeciesScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     AppLocalizations.of(context)!.cinnamon_species_landing_content1,
-                    style: textTheme.headlineMedium,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
 

@@ -52,7 +52,7 @@ class _PriceForecastLandingScreenState
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     AppLocalizations.of(context)!
-                        .price_forecast_landing_content1,
+                        .price_forecast_landing_content2,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -60,18 +60,15 @@ class _PriceForecastLandingScreenState
                   ),
                 ),
 
-                const SizedBox(height: 40), // Space before input fields
+                const SizedBox(height: 2), // Space before input fields
 
                 // Instruction Text
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     AppLocalizations.of(context)!
-                        .price_forecast_landing_content2,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                    ),
+                        .price_forecast_landing_content3,
+                    style: const TextStyle(color: Colors.grey, fontSize: 15),
                   ),
                 ),
 
@@ -82,7 +79,7 @@ class _PriceForecastLandingScreenState
                     child: Column(
                       children: [
                         // Prediction Date Field with Calendar
-                        const SizedBox(height: 90),
+                        const SizedBox(height: 40),
 
                         CustomButton(
                           text: AppLocalizations.of(context)!

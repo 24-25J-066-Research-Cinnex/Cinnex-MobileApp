@@ -68,10 +68,7 @@ class _CinnamonSpeciesLandingScreenState
                   child: Text(
                     AppLocalizations.of(context)!
                         .cinnamon_species_landing_content2,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                    ),
+                      style: const TextStyle(color: Colors.grey, fontSize: 15),
                   ),
                 ),
 

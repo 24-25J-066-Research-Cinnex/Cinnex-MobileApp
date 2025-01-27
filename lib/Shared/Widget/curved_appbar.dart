@@ -1,55 +1,67 @@
 import 'package:flutter/material.dart';
+import '../../Notification/notification_screen.dart';
 
 class CurvedAppBar extends StatelessWidget {
   final String title;
   final IconData? trailingIcon;
   final VoidCallback? onTrailingIconPressed;
+  final bool showNotificationIndicator;
 
   const CurvedAppBar({
     super.key,
     required this.title,
     this.trailingIcon,
     this.onTrailingIconPressed,
+    this.showNotificationIndicator = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    // Access the theme and its properties
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme; // Access colors
-    final textTheme = theme.textTheme; // Access text styles
-
     return SizedBox(
-      height: 160, // Height of the curved AppBar
+      height: 160,
       child: Stack(
         children: [
-          // Draw the custom curve
           CustomPaint(
             size: Size(MediaQuery.of(context).size.width, 280),
             painter: _AppBarCurvePainter(
-              color: colorScheme.primary, // Use primary color
-            ),
+                color: Theme.of(context).colorScheme.primary),
           ),
           SafeArea(
             child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const SizedBox(width: 50),
-                    Text(
-                      title,
-                      style:
-                          textTheme.titleMedium, // Use titleLarge from the theme
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(width: 50),
+                  Text(title, style: Theme.of(context).textTheme.titleMedium),
+                  if (trailingIcon != null)
+                    Stack(
+                      children: [
+                        IconButton(
+                          icon: Icon(trailingIcon, color: Colors.white),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => NotificationScreen(),
+                                ));
+                          },
+                        ),
+                        if (showNotificationIndicator)
+                          Positioned(
+                            right: 8,
+                            top: 8,
+                            child: CircleAvatar(
+                              radius: 5,
+                              backgroundColor: Colors.red,
+                            ),
+                          ),
+                      ],
                     ),
-                    if (trailingIcon != null)
-                      IconButton(
-                        icon: Icon(trailingIcon, color: Colors.white),
-                        onPressed: onTrailingIconPressed,
-                      ),
-                  ],
-                )),
+                ],
+              ),
+            ),
           ),
         ],
       ),

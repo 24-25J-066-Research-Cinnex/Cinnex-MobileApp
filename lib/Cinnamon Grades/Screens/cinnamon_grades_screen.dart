@@ -81,7 +81,10 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
                     AppLocalizations.of(context)!.cinnamon_grades_landing_content1,
-                    style: textTheme.headlineMedium,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
 

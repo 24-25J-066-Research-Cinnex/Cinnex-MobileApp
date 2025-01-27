@@ -87,12 +87,12 @@ class _OnboardingViewState extends State<OnboardingView> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(controller.items[index].image),
-                const SizedBox(height: 15),
+                //const SizedBox(height: 5),
                 Text(
                   controller.items[index].title,
                   style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 15),
+                //const SizedBox(height: 5),
                 Text(
                   controller.items[index].descriptions,
                   style: const TextStyle(color: Colors.grey, fontSize: 17),
