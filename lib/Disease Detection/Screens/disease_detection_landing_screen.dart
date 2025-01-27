@@ -52,7 +52,7 @@ class _DiseaseDetectionLandingScreenState
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Text(
                     AppLocalizations.of(context)!
-                        .cinnamon_diseases_landing_content1,
+                        .cinnamon_diseases_content,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class _DiseaseDetectionLandingScreenState
                   ),
                 ),
 
-                const SizedBox(height: 40), // Space before input fields
+                const SizedBox(height: 20), // Space before input fields
 
                 // Instruction Text
                 Padding(
@@ -68,10 +68,7 @@ class _DiseaseDetectionLandingScreenState
                   child: Text(
                     AppLocalizations.of(context)!
                         .cinnamon_diseases_landing_content2,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                    ),
+                    style: const TextStyle(color: Colors.grey, fontSize: 15),
                   ),
                 ),
 
@@ -82,7 +79,7 @@ class _DiseaseDetectionLandingScreenState
                     child: Column(
                       children: [
                         // Prediction Date Field with Calendar
-                        const SizedBox(height: 90),
+                        const SizedBox(height: 30),
 
                         CustomButton(
                           text: AppLocalizations.of(context)!

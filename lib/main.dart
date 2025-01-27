@@ -161,17 +161,17 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
       // Bottom Navigation Bar
       bottomNavigationBar: MotionTabBar(
         controller: _motionTabBarController,
-        initialSelectedTab: AppLocalizations.of(context)!.home,
+        initialSelectedTab: AppLocalizations.of(context)!.dashboard,
         useSafeArea: true,
         labels: [
-          AppLocalizations.of(context)!.home,
           AppLocalizations.of(context)!.dashboard,
+          AppLocalizations.of(context)!.home,
           AppLocalizations.of(context)!.storage,
           AppLocalizations.of(context)!.settings,
         ],
         icons: const [
-          Icons.home,
           Icons.dashboard,
+          Icons.chat,
           Icons.storage,
           Icons.settings
         ],
@@ -200,8 +200,8 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
         physics: const NeverScrollableScrollPhysics(),
         controller: _motionTabBarController,
         children: <Widget>[
+          DashboardScreen(),
           HomeScreen(), // Home tab
-          DashboardScreen(), // Dashboard tab
           FileStoragePage(), // Profile tab
           SettingsPage(),
         ],

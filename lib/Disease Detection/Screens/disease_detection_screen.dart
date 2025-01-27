@@ -190,8 +190,11 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                               // Add logic to detect disease
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
+                                  backgroundColor: colorScheme.primary,
                                   content: Text(
-                                    'Please select an image to detect disease',
+                                    AppLocalizations.of(context)!
+                                        .cinnamon_diseases_snack_bar,
+                                    style: textTheme.headlineSmall,
                                   ),
                                 ),
                               );
