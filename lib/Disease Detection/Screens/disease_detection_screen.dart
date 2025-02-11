@@ -194,10 +194,11 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   backgroundColor: colorScheme.primary,
+                                  
                                   content: Text(
                                     AppLocalizations.of(context)!
                                         .cinnamon_diseases_snack_bar,
-                                    style: textTheme.headlineSmall,
+                                    style: textTheme.labelSmall,
                                   ),
                                 ),
                               );

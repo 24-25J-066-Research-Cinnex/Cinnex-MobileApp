@@ -246,7 +246,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                                     backgroundColor: colorScheme.primary,
                                     content: Text(
                                       AppLocalizations.of(context)!.predicted_snack_bar,
-                                      style: textTheme.headlineSmall,
+                                      style: textTheme.labelSmall,
 
                                     ),
                                   ),

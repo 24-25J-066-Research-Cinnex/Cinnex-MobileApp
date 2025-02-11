@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cinnex_mobile/Cinnamon%20Species/Screens/cinnamon_species_response_screen.dart';
 import 'package:cinnex_mobile/Shared/Widget/camera_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
@@ -43,7 +44,7 @@ class _CinnomonSpeciesScreenState extends State<CinnomonSpeciesScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme; // Access colors
-    final textTheme = theme.textTheme; // Access text styles
+    //final textTheme = theme.textTheme; // Access text styles
 
     return Scaffold(
       body: Stack(
@@ -165,7 +166,16 @@ class _CinnomonSpeciesScreenState extends State<CinnomonSpeciesScreen> {
                         CustomButton(
                           text: AppLocalizations.of(context)!
                               .cinnamon_species_button2,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CinnomonSpeciesResponseScreen(
+                                  image: _image, detect: {},
+                                ),
+                              ),
+                            );
+                          },
                         ),
                         const Spacer(), // Push the button to the bottom
                       ],

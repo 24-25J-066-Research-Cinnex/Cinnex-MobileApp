@@ -147,6 +147,16 @@ class _MyAppState extends State<MyApp> {
               fontWeight: FontWeight.normal,
               color: Colors.black,
               fontFamily: 'Poppins'),
+          labelLarge: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontFamily: 'Poppins'),
+          labelSmall: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontFamily: 'Poppins'),
         ),
       ),
       home: LanguageSelectionScreen(onLanguageChange: _changeLanguage),

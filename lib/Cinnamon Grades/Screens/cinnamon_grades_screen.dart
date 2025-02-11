@@ -6,6 +6,8 @@ import '../../Shared/Widget/curved_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'cinnamon_grades_response_screen.dart';
+
 class CinnomonGradesScreen extends StatefulWidget {
   const CinnomonGradesScreen({super.key});
   @override
@@ -43,7 +45,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme; // Access colors
-    final textTheme = theme.textTheme; // Access text styles
+    //final textTheme = theme.textTheme; // Access text styles
 
     return Scaffold(
       body: Stack(
@@ -165,7 +167,16 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                         CustomButton(
                           text: AppLocalizations.of(context)!
                               .cinnamon_grades_button2,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CinnomonGradesResponseScreen(
+                                  image: _image, detect: {},
+                                ),
+                              ),
+                            );
+                          },
                         ),
                         const Spacer(), // Push the button to the bottom
                       ],
