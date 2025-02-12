@@ -27,7 +27,7 @@ class CinnomonGradesResponseScreenState
     final colorScheme = theme.colorScheme; // Access colors
     final textTheme = theme.textTheme; // Access text styles
 
-    _logger.d('Disease Detected: ${widget.detect['prediction']}');
+    _logger.d('Grade Detected: ${widget.detect['predicted_grade']}');
 
     return Scaffold(
       body: Stack(
@@ -87,21 +87,38 @@ class CinnomonGradesResponseScreenState
                             )
                                 : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(height: 8),
-                              ],
                             ),
                           ),
                         ),
-                        const SizedBox(height: 20),
-                        Text(
-                          '${widget.detect['prediction']}', // Disease Name
-                          style: textTheme.bodyMedium,
+                        const SizedBox(height: 20), // Space before the button
+                        ElevatedButton(
+                          onPressed: () {
+                            // Switch to LKR
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: colorScheme.primary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: Text(
+                            AppLocalizations.of(context)!
+                                .predicted_grade,
+                            style: textTheme.bodyMedium?.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
+                        const SizedBox(height: 16),
                         Text(
-                          'Spread percentage: ${widget.detect['disease_spread_percentage'] } %',
-                          style: textTheme.bodySmall,
+                          '${widget.detect['predicted_grade']}', // Disease Name
+                          style: textTheme.bodyLarge?.copyWith(
+                            color: colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          )
+
                         ),
+
                         const SizedBox(height: 16),
                         //Text(
                          // AppLocalizations.of(context)!

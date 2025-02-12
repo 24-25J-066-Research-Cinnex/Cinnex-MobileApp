@@ -4,13 +4,13 @@ import 'package:http/http.dart' as http;
 import 'dart:io';
 
 class SpeciesService {
-  var baseUrl = 'http://127.0.0.1:8000/diseasepredict';
+  var baseUrl = 'http://127.0.0.1:8000/leafclassify';
   static final Logger _logger = Logger();
 
-  static Future<Map<String, dynamic>> getDisease(File image) async {
+  static Future<Map<String, dynamic>> getSpecies(File image) async {
     try {
-      Uri url = Uri.parse('http://10.0.2.2:8000/diseasepredict');
-      _logger.i('Detecting disease');
+      Uri url = Uri.parse('http://10.0.2.2:8000/leafclassify');
+      _logger.i('Detecting Species');
 
       var request = http.MultipartRequest('POST', url)
         ..files.add(await http.MultipartFile.fromPath('file', image.path));
@@ -22,10 +22,10 @@ class SpeciesService {
       if (response.statusCode == 200) {
         return jsonDecode(responseBody);
       } else {
-        throw Exception('Failed to detect disease: ${response.statusCode}');
+        throw Exception('Failed to detect Species: ${response.statusCode}');
       }
     } catch (e) {
-      _logger.e('Error detecting disease: $e');
+      _logger.e('Error detecting Species: $e');
       rethrow;
     }
   }

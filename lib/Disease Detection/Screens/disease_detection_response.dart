@@ -87,27 +87,41 @@ class DiseaseDetectionResponseScreenState
                                   )
                                 : Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(height: 8),
-                                    ],
                                   ),
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: () {
+                            // Switch to LKR
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: colorScheme.primary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: Text(
+                            AppLocalizations.of(context)!
+                                .predicted_disease,
+                            style: textTheme.bodyMedium?.copyWith(
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 20),
                         Text(
                           '${widget.detect['prediction']}', // Disease Name
-                          style: textTheme.bodyMedium,
+                            style: textTheme.bodyLarge?.copyWith(
+                              color: colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            )
                         ),
                         Text(
                           'Spread percentage: ${widget.detect['disease_spread_percentage'] } %',
                           style: textTheme.bodySmall,
                         ),
                         const SizedBox(height: 16),
-                        Text(
-                          AppLocalizations.of(context)!
-                              .cinnamon_diseases_landing_content2,
-                          style: textTheme.headlineMedium,
-                        ),
                         const SizedBox(height: 30),
                         // Predict Market Price Button
                         const Spacer(), // Push the button to the bottom

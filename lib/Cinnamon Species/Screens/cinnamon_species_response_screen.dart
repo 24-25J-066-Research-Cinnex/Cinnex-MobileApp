@@ -27,7 +27,7 @@ class CinnomonSpeciesResponseScreenState
     final colorScheme = theme.colorScheme; // Access colors
     final textTheme = theme.textTheme; // Access text styles
 
-    _logger.d('Disease Detected: ${widget.detect['prediction']}');
+    _logger.d('Species Detected: ${widget.detect['leaf_type']}');
 
     return Scaffold(
       body: Stack(
@@ -87,21 +87,37 @@ class CinnomonSpeciesResponseScreenState
                             )
                                 : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const SizedBox(height: 8),
-                              ],
                             ),
                           ),
                         ),
                         const SizedBox(height: 20),
-                        Text(
-                          '${widget.detect['prediction']}', // Disease Name
-                          style: textTheme.bodyMedium,
+                        ElevatedButton(
+                          onPressed: () {
+                            // Switch to LKR
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: colorScheme.primary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          child: Text(
+                            AppLocalizations.of(context)!
+                                .predicted_species,
+                            style: textTheme.bodyMedium?.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
+                        const SizedBox(height: 16),
                         Text(
-                          'Spread percentage: ${widget.detect['disease_spread_percentage'] } %',
-                          style: textTheme.bodySmall,
+                          '${widget.detect['leaf_type']}', // Disease Name
+                            style: textTheme.bodyLarge?.copyWith(
+                              color: colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            )
                         ),
+
                         const SizedBox(height: 16),
                         //Text(
                         // AppLocalizations.of(context)!

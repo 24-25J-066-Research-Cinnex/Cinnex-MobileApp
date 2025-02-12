@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'package:cinnex_mobile/Cinnamon%20Grades/Services/grades_service.dart';
 import 'package:cinnex_mobile/Shared/Widget/camera_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cinnex_mobile/Shared/Widget/custom_button.dart';
+import 'package:logger/logger.dart';
 import '../../Shared/Widget/curved_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
@@ -16,8 +18,26 @@ class CinnomonGradesScreen extends StatefulWidget {
 
 class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
   File? _image; // Holds the selected image
-
+  static final Logger _logger = Logger();
   final ImagePicker _picker = ImagePicker();
+
+  //function to call the grade detection service
+  Future<Map<String, dynamic>> detectGrade() async {
+    if (_image != null) {
+      // Add logic to detect disease
+      try {
+        final detect = await GradesService.getGrade(_image!);
+        _logger.d('API Response: $detect');
+        return detect;
+      } catch (e) {
+        _logger.e('Error detecting disease: $e');
+        rethrow;
+      }
+    } else {
+      _logger.e('Please select all required fields');
+      throw Exception('Please select all required fields');
+    }
+  }
 
   // Function to pick an image from the gallery
   Future<void> _pickImageFromGallery() async {
@@ -45,7 +65,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme; // Access colors
-    //final textTheme = theme.textTheme; // Access text styles
+    final textTheme = theme.textTheme; // Access text styles
 
     return Scaffold(
       body: Stack(
@@ -166,16 +186,38 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                         // Predict Market Price Button
                         CustomButton(
                           text: AppLocalizations.of(context)!
-                              .cinnamon_grades_button2,
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CinnomonGradesResponseScreen(
-                                  image: _image, detect: {},
+                              .cinnamon_diseases_button2,
+                          onPressed: () async {
+                            // Add logic to detect disease
+                            if (_image == null) {
+                              // Add logic to detect disease
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  backgroundColor: colorScheme.primary,
+
+                                  content: Text(
+                                    AppLocalizations.of(context)!
+                                        .cinnamon_diseases_snack_bar,
+                                    style: textTheme.labelSmall,
+                                  ),
                                 ),
-                              ),
-                            );
+                              );
+                            } else {
+                              try {
+                                final detectResponse = await detectGrade();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          CinnomonGradesResponseScreen(
+                                            detect: detectResponse,
+                                            image: _image!,
+                                          )),
+                                );
+                              } catch (e) {
+                                _logger.e('Error getting forecast: $e');
+                              }
+                            }
                           },
                         ),
                         const Spacer(), // Push the button to the bottom

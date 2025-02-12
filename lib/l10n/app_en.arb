@@ -1,6 +1,6 @@
 {
   "title": "Hello",
-  "message": "Welcome to our app!",
+  "message": "Coming Soon !",
     "home": "Chat",
     "dashboard": "Dashboard",
     "profile": "Profile",
@@ -36,6 +36,7 @@
   "cinnamon_diseases_button1": "Open Camera and take photo",
   "cinnamon_diseases_button2": "Predict the Disease",
 "cinnamon_diseases_snack_bar": "Please upload a clear photo to identify the disease.",
+  "predicted_disease": "Predicted Disease",
 
 
   "cinnamon_species": "Cinnamon Species",
@@ -46,6 +47,7 @@
   "cinnamon_species_or": "Or",
   "cinnamon_species_button1": "Open Camera and Take Photo",
   "cinnamon_species_button2": "Identify the Species",
+  "predicted_species": "Predicted Species",
 
 
 
@@ -57,8 +59,7 @@
   "cinnamon_grades_or": "Or",
   "cinnamon_grades_button1": "Open Camera and Take Photo",
   "cinnamon_grades_button2": "Predict the Grade",
-
-
+  "predicted_grade": "predicted Grade",
 
 
   "language": "Language"

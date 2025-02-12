@@ -1,6 +1,6 @@
 {
   "title": "හෙලෝ",
-  "message": "අපේ යෙදුමට සාදරයෙන් පිළිගනිමු!",
+  "message": "Coming Soon !!",
     "home": "කතාබහ",
     "dashboard": "උපකරණ",
     "profile": "පැතිකඩ",
@@ -35,6 +35,7 @@
   "cinnamon_diseases_button1": "ඡායාරූපයක් ගන්න",
   "cinnamon_diseases_button2": "රෝගය පුරෝකථනය කරන්න",
   "cinnamon_diseases_snack_bar": "කරුණාකර රෝග හඳුනා ගැනීමට පැහැදිලි ඡායාරූපයක් ඇතුළු කරන්න",
+  "predicted_disease": "රෝග පුරෝකථනය",
 
 
   "cinnamon_species": "කුරුඳු විශේෂ",
@@ -45,6 +46,7 @@
   "cinnamon_species_or": "හෝ",
   "cinnamon_species_button1": "කැමරාව විවෘත කර රූපයක් ගන්න",
   "cinnamon_species_button2": "වර්ගය හඳුනාගන්න",
+  "predicted_species": "පුරෝකථනය කළ වර්ගය",
 
 
 
@@ -56,6 +58,7 @@
   "cinnamon_grades_or": "හෝ",
   "cinnamon_grades_button1": "කැමරාව විවෘත කර රූපයක් ගන්න",
   "cinnamon_grades_button2": "මට්ටම හඳුනාගන්න",
+  "predicted_grade": "පුරෝකථනය කළ ශ්\u200Dරේණිය",
 
 
   "language": "භාෂාව"
