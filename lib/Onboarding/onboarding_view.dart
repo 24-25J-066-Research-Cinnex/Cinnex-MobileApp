@@ -39,41 +39,46 @@ class _OnboardingViewState extends State<OnboardingView> {
         child: isLastPage
             ? getStarted()
             : Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // Skip Button
-            TextButton(
-              onPressed: () => pageController.jumpToPage(controller.items.length - 1),
-              child: Text(
-                AppLocalizations.of(context)!.skip,
-                style: TextStyle(color: colorScheme.primary),
-              ),
-            ),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Skip Button
+                  TextButton(
+                    onPressed: () =>
+                        pageController.jumpToPage(controller.items.length - 1),
+                    child: Text(
+                      AppLocalizations.of(context)!.skip,
+                      style: theme.textTheme.bodySmall!
+                          .copyWith(color: colorScheme.primary),
+                    ),
+                  ),
 
-            // Indicator
-            SmoothPageIndicator(
-              controller: pageController,
-              count: controller.items.length,
-              onDotClicked: (index) => pageController.animateToPage(index,
-                  duration: const Duration(milliseconds: 600), curve: Curves.easeIn),
-              effect: WormEffect(
-                dotHeight: 15,
-                dotWidth: 15,
-                activeDotColor: colorScheme.primary,
-              ),
-            ),
+                  // Indicator
+                  SmoothPageIndicator(
+                    controller: pageController,
+                    count: controller.items.length,
+                    onDotClicked: (index) => pageController.animateToPage(index,
+                        duration: const Duration(milliseconds: 600),
+                        curve: Curves.easeIn),
+                    effect: WormEffect(
+                      dotHeight: 15,
+                      dotWidth: 15,
+                      activeDotColor: colorScheme.primary,
+                    ),
+                  ),
 
-            // Next Button
-            TextButton(
-              onPressed: () => pageController.nextPage(
-                  duration: const Duration(milliseconds: 600), curve: Curves.easeIn),
-              child: Text(
-                AppLocalizations.of(context)!.next,
-                style: TextStyle(color: colorScheme.primary),
+                  // Next Button
+                  TextButton(
+                    onPressed: () => pageController.nextPage(
+                        duration: const Duration(milliseconds: 600),
+                        curve: Curves.easeIn),
+                    child: Text(
+                      AppLocalizations.of(context)!.next,
+                      style: theme.textTheme.bodySmall!
+                          .copyWith(color: colorScheme.primary),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
       body: Container(
         margin: const EdgeInsets.symmetric(horizontal: 15),
@@ -83,21 +88,17 @@ class _OnboardingViewState extends State<OnboardingView> {
           itemCount: controller.items.length,
           controller: pageController,
           itemBuilder: (context, index) {
+            final item = controller.items[index];
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(controller.items[index].image),
-                //const SizedBox(height: 5),
-                Text(
-                  controller.items[index].title,
-                  style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                Image.asset(
+                  item.image,
                 ),
-                //const SizedBox(height: 5),
-                Text(
-                  controller.items[index].descriptions,
-                  style: const TextStyle(color: Colors.grey, fontSize: 17),
-                  textAlign: TextAlign.center,
-                ),
+                const SizedBox(height: 5),
+                item.title,
+                const SizedBox(height: 5),
+                item.descriptions,
               ],
             );
           },
@@ -125,7 +126,8 @@ class _OnboardingViewState extends State<OnboardingView> {
           if (!mounted) return;
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => MainLayout(locale: widget.locale)),
+            MaterialPageRoute(
+                builder: (context) => MainLayout(locale: widget.locale)),
           );
         },
         text: AppLocalizations.of(context)!.get_started,
