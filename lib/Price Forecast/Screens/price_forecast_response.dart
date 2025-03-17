@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:logger/logger.dart';
@@ -12,8 +13,7 @@ class ChartData {
   ChartData(this.date, this.price);
 }
 
-class PriceForecastResponseScreen extends StatelessWidget {
-  static final Logger _logger = Logger();
+class PriceForecastResponseScreen extends StatefulWidget {
 
   final Map<String, dynamic> forecast;
   final Map<String, dynamic> forecastLstm;
@@ -25,12 +25,38 @@ class PriceForecastResponseScreen extends StatelessWidget {
     required this.forecastLstm,
     required this.selectedDate,
   });
+  @override
+  _PriceForecastResponseScreenState createState() => _PriceForecastResponseScreenState();
+}
 
+class _PriceForecastResponseScreenState extends State<PriceForecastResponseScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.warning,
+        animType: AnimType.rightSlide,
+        title: 'Advice',
+        desc: widget.forecastLstm['advice'] ?? 'No advice available.',
+        btnOkOnPress: () {},
+        btnOkColor: Color(0xFF018241),
+      ).show();
+    });
+  }
+
+  final _logger = Logger();
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final textTheme = theme.textTheme;
+
+    final forecast = widget.forecast;
+    final forecastLstm = widget.forecastLstm;
+    final selectedDate = widget.selectedDate;
+
 
     _logger.d('LKR ${forecast['predicted_price']}');
     _logger.d('predictions ${forecastLstm['predictions']}');
