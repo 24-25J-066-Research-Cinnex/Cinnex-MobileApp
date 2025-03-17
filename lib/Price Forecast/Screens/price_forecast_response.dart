@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:logger/logger.dart';
+import 'package:syncfusion_flutter_charts/charts.dart'; // Correct import
+import 'package:intl/intl.dart'; // For DateFormat
 import '../../Shared/Widget/curved_appbar.dart';
+
+class ChartData {
+  final DateTime date;
+  final double price;
+
+  ChartData(this.date, this.price);
+}
 
 class PriceForecastResponseScreen extends StatelessWidget {
   static final Logger _logger = Logger();
 
   final Map<String, dynamic> forecast;
+  final Map<String, dynamic> forecastLstm;
+  final String selectedDate;
 
   const PriceForecastResponseScreen({
     super.key,
-    required this.forecast, // Required named parameter
+    required this.forecast,
+    required this.forecastLstm,
+    required this.selectedDate,
   });
 
   @override
@@ -20,6 +33,20 @@ class PriceForecastResponseScreen extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     _logger.d('LKR ${forecast['predicted_price']}');
+    _logger.d('predictions ${forecastLstm['predictions']}');
+    _logger.d('advice ${forecastLstm['advice']}');
+
+    // Prepare chart data
+    final List<ChartData> chartData = [];
+    final predictions = forecastLstm['predictions'] as List<dynamic>;
+    final DateTime now = DateFormat('yyyy-MM-dd').parse(selectedDate);
+
+    for (int i = 0; i < predictions.length; i++) {
+      chartData.add(ChartData(
+        now.subtract(Duration(days: predictions.length - i - 1)), // Assign dates for the last 7 days
+        predictions[i].toDouble(), // Convert prediction to double
+      ));
+    }
 
     return Scaffold(
       body: Stack(
@@ -98,7 +125,6 @@ class PriceForecastResponseScreen extends StatelessWidget {
                             const SizedBox(height: 16),
 
                             // Price Display
-
                             Text(
                               'LKR ${forecast['predicted_price']}', // Display price
                               style: textTheme.titleLarge?.copyWith(
@@ -112,6 +138,42 @@ class PriceForecastResponseScreen extends StatelessWidget {
                               AppLocalizations.of(context)!.predicted_price2,
                               style: textTheme.bodySmall,
                               textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // Line Chart
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 5,
+                              offset: const Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: SfCartesianChart(
+                          primaryXAxis: DateTimeAxis(
+                            title: AxisTitle(text: 'Date'),
+                            dateFormat: DateFormat('MMM dd'), // Format dates
+                          ),
+                          primaryYAxis: NumericAxis(
+                            title: AxisTitle(text: 'Price (LKR)'),
+                          ),
+                          series: <CartesianSeries<dynamic, dynamic>>[
+                            LineSeries<ChartData, DateTime>(
+                              dataSource: chartData,
+                              xValueMapper: (ChartData data, _) => data.date,
+                              yValueMapper: (ChartData data, _) => data.price,
+                              color: colorScheme.primary,
+                              markerSettings: const MarkerSettings(isVisible: true),
                             ),
                           ],
                         ),

@@ -36,10 +36,15 @@
   "cinnamon_diseases_or": "Or",
   "cinnamon_diseases_button1": "Open Camera and take photo",
   "cinnamon_diseases_button2": "Predict the Disease",
+  "cinnamon_diseases_button3": "View the treatments",
 "cinnamon_diseases_snack_bar": "Please upload a clear photo to identify the disease.",
   "predicted_disease": "Predicted Disease",
  "disease_ditect_loading" : "Predicting Disease...",
-
+  "disease_ditect_healthy": "",
+  "disease_ditect_gall": "In cool and humid environmental conditions, Cinnamon Leaf Gall Disease is caused by pests(mites and lice) sucking plant sap, especially during the nursery and sapling stages.",
+  "disease_ditect_spot": "This disease is a fungal infection that weakens the plant, causing premature leaf fall and leaf discoloration.",
+  "disease_ditect_gall_treatment": "mix 10 milliliters (two teaspoons) of Abamectin (18 grams per liter) in a 16-liter sprayer tank and spray thoroughly over the entire bush using a flat fan nozzle.",
+  "disease_ditect_spot_treatment": "Fungicide Application:\nApply a 1% Bordeaux mixture or another copper-based fungicide.\nSpray a solution containing 20 milliliters of Hexaconazole fungicide (50 grams per liter), diluted in 10 liters of water.\nSpray a solution containing 5 milliliters of tebuconazole fungicide (250 grams per liter), diluted in 10 liters of water",
 
   "cinnamon_species": "Cinnamon Species",
   "cinnamon_species_landing_content1": "To accurately identify cinnamon species, ensure clear and detailed images of the plant parts such as leaves, bark, or buds are provided.",
@@ -51,8 +56,8 @@
   "cinnamon_species_button2": "Identify the Species",
   "predicted_species": "Predicted Species",
   "species_ditect_loading": "Predicting Species...",
-
-
+"pure_cinnamon_leaves":"Pure Cinnamon Leaves (Cinnamomum verum): These come from the true cinnamon tree and are commonly used for culinary and medicinal purposes. They have a mild, sweet aroma and are often used as a spice or for making cinnamon tea.",
+  "wild_cinnamon_leaves": "Wild Cinnamon Leaves (Cinnamomum species - other varieties): These come from wild-growing cinnamon trees and may have a stronger, more pungent smell.They may not have the same refined flavor as pure cinnamon leaves.",
 
   "cinnamon_grades": "Cinnamon Grades",
   "cinnamon_grades_landing_content1": "To assess the grade of cinnamon, provide high-resolution images focusing on the bark or quills of the cinnamon.",
@@ -64,7 +69,10 @@
   "cinnamon_grades_button2": "Predict the Grade",
   "predicted_grade": "predicted Grade",
   "grade_ditect_loading": "Predicting Grade...",
-
+  "grade_ditect_alba":"The highest quality cinnamon, Alba has the thinnest and most delicate quills between 6mm-7mm in diameter. It has a refined aroma, smooth texture, and is highly valued in the international market.",
+  "grade_ditect_c5s":"A premium grade with quills slightly thicker than Alba (between 7mm -16mm in diameter). It has a strong aroma, smooth surface, and is widely used for high-end culinary applications.",
+  "grade_ditect_m5":"A mid-range grade with quills (between16-19mm in diameter). It has a slightly rougher texture but retains good flavor and aroma, making it popular for general use.",
+"grade_ditect_h1": "A lower grade with thicker, coarser quills (between 19mm-25mm in diameter). It is often used for extraction purposes, such as making cinnamon oil and powder, due to its strong flavor.",
 
   "language": "Language"
 
