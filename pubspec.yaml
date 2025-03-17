@@ -91,6 +91,7 @@ flutter:
     - assets/images/forecast.png
     - assets/images/grade.png
     - assets/images/spec.png
+    - assets/images/Chat Bot.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

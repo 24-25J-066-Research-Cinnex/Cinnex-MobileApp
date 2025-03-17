@@ -3,13 +3,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
+import '../../Shared/Services/config.dart';
+
 class GradesService {
-  var baseUrl = 'http://127.0.0.1:8000/gradepredict';
+  //var baseUrl = 'http://192.168.8.102:8000/grade_predict';
   static final Logger _logger = Logger();
 
   static Future<Map<String, dynamic>> getGrade(File image) async {
     try {
-      Uri url = Uri.parse('http://10.0.2.2:8000/gradepredict');
+      Uri url = Uri.parse('${Config.baseUrl}/grade_predict');
       _logger.i('Detecting Grade');
 
       var request = http.MultipartRequest('POST', url)

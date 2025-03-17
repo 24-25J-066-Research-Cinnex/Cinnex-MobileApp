@@ -44,12 +44,12 @@ class LanguageSelectionScreen extends StatelessWidget {
               const SizedBox(height: 40),
               Text(
                 "Select Your Preferred Language",
-                style: textTheme.bodyMedium,
+                style: textTheme.bodySmall,
               ),
               const SizedBox(height: 20),
               Text(
                 'ඔබ කැමති භාෂාව තෝරන්න',
-                style: textTheme.bodyMedium,
+                style: textTheme.bodySmall,
               ),
               const SizedBox(height: 30),
               LanguageButton(

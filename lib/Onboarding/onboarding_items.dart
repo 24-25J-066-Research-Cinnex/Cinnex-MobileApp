@@ -18,7 +18,7 @@ class OnboardingItems {
             ),
           ),
           descriptions: Text(
-            AppLocalizations.of(context)!.price_forecast_landing_content1,
+            AppLocalizations.of(context)!.price_forecast_landing_content2,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -79,7 +79,7 @@ class OnboardingItems {
             textAlign: TextAlign.center,
           ),
           descriptions: Text(
-            AppLocalizations.of(context)!.cinnamon_diseases_landing_content1,
+            AppLocalizations.of(context)!.cinnamon_diseases_content,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,

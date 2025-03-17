@@ -3,13 +3,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
+import '../../Shared/Services/config.dart';
+
 class DiseaseService {
-  var baseUrl = 'http://127.0.0.1:8000/diseasepredict';
+  //var baseUrl = 'http://192.168.8.102:8000/disease_predict';
   static final Logger _logger = Logger();
 
   static Future<Map<String, dynamic>> getDisease(File image) async {
     try {
-      Uri url = Uri.parse('http://10.0.2.2:8000/diseasepredict');
+      Uri url = Uri.parse('${Config.baseUrl}/disease_predict');
       _logger.i('Detecting disease');
 
       var request = http.MultipartRequest('POST', url)

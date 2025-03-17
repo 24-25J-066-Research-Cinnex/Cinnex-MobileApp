@@ -253,7 +253,33 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                               );
                             }else{
                             try {
+                              // Show loading dialog
+                              showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (BuildContext context) {
+                                  return Dialog(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          CircularProgressIndicator(),
+                                          SizedBox(width: 16),
+                                          Text(AppLocalizations.of(context)!.price_ditect_loading),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                              // Wait for a fixed duration (e.g., 3 seconds)
+                              await Future.delayed(Duration(seconds: 4));
+
                               final forecastData = await getForecast();
+                              // Close the loading dialog
+                              Navigator.pop(context);
+                              // Navigate to the forecast response screen
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -265,6 +291,8 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                               );
                             }
                             catch (e) {
+                              // Close the loading dialog
+                              Navigator.pop(context);
                               logger.e('Error getting forecast: $e');
                             }
                             }

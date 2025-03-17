@@ -54,7 +54,7 @@ class _PriceForecastLandingScreenState
                     AppLocalizations.of(context)!
                         .price_forecast_landing_content2,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -68,7 +68,7 @@ class _PriceForecastLandingScreenState
                   child: Text(
                     AppLocalizations.of(context)!
                         .price_forecast_landing_content3,
-                    style: const TextStyle(color: Colors.grey, fontSize: 15),
+                    style: const TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                 ),
 
@@ -79,7 +79,7 @@ class _PriceForecastLandingScreenState
                     child: Column(
                       children: [
                         // Prediction Date Field with Calendar
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 5),
 
                         CustomButton(
                           text: AppLocalizations.of(context)!

@@ -5,13 +5,14 @@ import '../Shared/Widget/curved_appbar.dart';
 class HomeScreen extends StatelessWidget {
   //final Function(Locale) onLanguageChange;
   const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
           // Curved AppBar
-           CurvedAppBar(
+          CurvedAppBar(
             title: AppLocalizations.of(context)!.home,
             trailingIcon: Icons.notifications,
             onTrailingIconPressed: null, // Add action if needed
@@ -20,9 +21,19 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 100),
             child: Center(
-              child: Text(
-                AppLocalizations.of(context)!.message,
-                //style: Theme.of(context).textTheme.titleLarge,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/Chat Bot.png',
+                    height: 200,
+                    width: 200,
+                  ),
+                  Text(
+                    AppLocalizations.of(context)!.message,
+                    //style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                ],
               ),
             ),
           ),

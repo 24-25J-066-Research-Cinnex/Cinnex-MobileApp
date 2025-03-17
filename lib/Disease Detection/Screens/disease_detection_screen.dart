@@ -20,6 +20,7 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
   File? _image; // Holds the selected image
   static final Logger _logger = Logger();
   final ImagePicker _picker = ImagePicker();
+  bool _isLoading = false;
 
   //function to call the disease detection service
   Future<Map<String, dynamic>> detectDisease() async {
@@ -59,6 +60,7 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
         _image = File(capturedFile.path);
       });
     }
+
   }
 
   @override
@@ -96,7 +98,7 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 70), // Space below AppBar
+                const SizedBox(height: 40), // Space below AppBar
 
                 // Instruction Text
                 Padding(
@@ -110,7 +112,7 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 20), // Space before input fields
+                const SizedBox(height: 10), // Space before input fields
 
                 // Input Fields
                 Expanded(
@@ -122,7 +124,8 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                         GestureDetector(
                           onTap: () {
                             // Add file picker logic here
-                            _pickImageFromGallery(); // Open gallery to pick an image
+                            _pickImageFromGallery();// Open gallery to pick an image
+
                           },
                           child: Container(
                             height: 200,
@@ -160,24 +163,25 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                                   ),
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 10),
                         Text(
                           AppLocalizations.of(context)!.cinnamon_diseases_or,
                           style: theme.textTheme.bodyMedium!.copyWith(
                             color: Colors.grey,
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 10),
                         CameraButton(
                           text: AppLocalizations.of(context)!
                               .cinnamon_diseases_button1,
                           onPressed: () {
                             _captureImageWithCamera(); // Open camera to capture an image
-                          },
+
+                            },
                         ),
                         // Cinnamon Grade Dropdown
 
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 20),
 
                         // Region Dropdown
 
@@ -204,7 +208,35 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                               );
                             } else {
                               try {
+                                // Show loading dialog
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return Dialog(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            CircularProgressIndicator(),
+                                            SizedBox(width: 16),
+                                            Text(AppLocalizations.of(context)!.disease_ditect_loading,
+                                              style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                                // Wait for a fixed duration (e.g., 3 seconds)
+                                await Future.delayed(Duration(seconds: 4));
                                 final detectResponse = await detectDisease();
+                                // Close the loading dialog
+                                Navigator.pop(context);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -215,6 +247,8 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                                           )),
                                 );
                               } catch (e) {
+                                // Close the loading dialog
+                                Navigator.pop(context);
                                 _logger.e('Error getting forecast: $e');
                               }
                             }
