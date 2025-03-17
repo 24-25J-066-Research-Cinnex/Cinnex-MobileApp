@@ -34,7 +34,7 @@ class CurvedAppBar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const SizedBox(width: 50),
-                  Text(title, style: Theme.of(context).textTheme.titleMedium),
+                  Text(title, style: Theme.of(context).textTheme.titleSmall),
                   if (trailingIcon != null)
                     Stack(
                       children: [

@@ -25,11 +25,12 @@
   "predicted_price": "Predicted Price",
   "predicted_price2": "Price for 1 Kilo Gram of Cinnamon in\nSri Lankan Rupees",
   "predicted_snack_bar": "Please select all required fields",
+  "price_ditect_loading": "Predicting price...",
 
 
   "cinnamon_diseases": "Diseases Detection",
   "cinnamon_diseases_landing_content1": "To accurately identify diseases in cinnamon plants, ensure you upload clear and well-lit images of the affected leaves or plants. Early detection and accurate identification are crucial for effective disease management. Once a diagnosis is provided, promptly follow the recommended treatments to maintain plant health and optimize yields.",
-  "cinnamon_diseases_landing_content2": "1.Capture Image: Take clear and close-up photos of leaves, focusing on areas with visible spots, discoloration, or damage. Ensure good lighting and avoid blurry images for the best results.\n \n2.Upload Photo to App: Submit the image to the app’s disease detection feature. The AI system analyzes the photo to identify potential diseases.\n \n3.Review Diagnosis: Check the results to identify the proposed disease and learn about its symptoms, causes, and effects on the cinnamon plant.\n \n4.Follow Treatment: Apply the recommended treatments promptly to control the disease. Utilize preventive measures and monitor the plant regularly to prevent recurrence. For severe cases, consider consulting agricultural experts for additional guidance.",
+  "cinnamon_diseases_landing_content2": "1.Capture Image: Take clear and close-up photos of leaves, focusing on areas with visible spots, discoloration, or damage. Ensure good lighting and avoid blurry images for the best results.\n \n2.Upload Photo to App: Submit the image to the app’s disease detection feature. The AI system analyzes the photo to identify potential diseases.\n \n3.Review Diagnosis: Check the results to identify the proposed disease and learn about its symptoms, causes, and effects on the cinnamon plant.\n \n4.Follow Treatment: Apply the recommended treatments promptly to control the disease. Utilize preventive measures and monitor the plant regularly to prevent recurrence.",
   "cinnamon_diseases_content": "Here, you can detect diseases on cinnamon leaves. Please upload a clear image or take a picture of a cinnamon leaf.",
   "cinnamon_diseases_button0": "Select file",
   "cinnamon_diseases_or": "Or",
@@ -37,6 +38,7 @@
   "cinnamon_diseases_button2": "Predict the Disease",
 "cinnamon_diseases_snack_bar": "Please upload a clear photo to identify the disease.",
   "predicted_disease": "Predicted Disease",
+ "disease_ditect_loading" : "Predicting Disease...",
 
 
   "cinnamon_species": "Cinnamon Species",
@@ -48,6 +50,7 @@
   "cinnamon_species_button1": "Open Camera and Take Photo",
   "cinnamon_species_button2": "Identify the Species",
   "predicted_species": "Predicted Species",
+  "species_ditect_loading": "Predicting Species...",
 
 
 
@@ -60,6 +63,7 @@
   "cinnamon_grades_button1": "Open Camera and Take Photo",
   "cinnamon_grades_button2": "Predict the Grade",
   "predicted_grade": "predicted Grade",
+  "grade_ditect_loading": "Predicting Grade...",
 
 
   "language": "Language"

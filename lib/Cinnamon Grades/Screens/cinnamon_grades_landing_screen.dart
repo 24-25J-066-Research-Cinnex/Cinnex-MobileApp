@@ -55,7 +55,7 @@ class _CinnomonGradesLandingScreenState
                     AppLocalizations.of(context)!
                         .cinnamon_grades_content,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -69,7 +69,7 @@ class _CinnomonGradesLandingScreenState
                   child: Text(
                     AppLocalizations.of(context)!
                         .cinnamon_grades_landing_content2,
-                      style: const TextStyle(color: Colors.grey, fontSize: 15),
+                      style: const TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                 ),
 

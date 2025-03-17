@@ -45,7 +45,7 @@ class _DiseaseDetectionLandingScreenState
                   ),
                 ),
 
-                const SizedBox(height: 60), // Space below AppBar
+                const SizedBox(height: 50), // Space below AppBar
 
                 // Instruction Text
                 Padding(
@@ -54,13 +54,13 @@ class _DiseaseDetectionLandingScreenState
                     AppLocalizations.of(context)!
                         .cinnamon_diseases_content,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 20), // Space before input fields
+                const SizedBox(height: 10), // Space before input fields
 
                 // Instruction Text
                 Padding(
@@ -68,7 +68,7 @@ class _DiseaseDetectionLandingScreenState
                   child: Text(
                     AppLocalizations.of(context)!
                         .cinnamon_diseases_landing_content2,
-                    style: const TextStyle(color: Colors.grey, fontSize: 15),
+                    style: const TextStyle(color: Colors.grey, fontSize: 13),
                   ),
                 ),
 
@@ -79,7 +79,7 @@ class _DiseaseDetectionLandingScreenState
                     child: Column(
                       children: [
                         // Prediction Date Field with Calendar
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 5),
 
                         CustomButton(
                           text: AppLocalizations.of(context)!

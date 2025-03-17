@@ -3,13 +3,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:io';
 
+import '../../Shared/Services/config.dart';
+
 class SpeciesService {
-  var baseUrl = 'http://127.0.0.1:8000/leafclassify';
+  //var baseUrl = 'http://192.168.8.102:8000/leaf_classify';
   static final Logger _logger = Logger();
 
   static Future<Map<String, dynamic>> getSpecies(File image) async {
     try {
-      Uri url = Uri.parse('http://10.0.2.2:8000/leafclassify');
+      Uri url = Uri.parse('${Config.baseUrl}/leaf_classify');
       _logger.i('Detecting Species');
 
       var request = http.MultipartRequest('POST', url)

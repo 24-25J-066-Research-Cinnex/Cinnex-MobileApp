@@ -2,14 +2,17 @@ import 'package:logger/logger.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../Shared/Services/config.dart';
+
+
 class ForecastService {
-  var baseUrl = 'http://127.0.0.1:8000/predict';
+  //var baseUrl = 'http://192.168.8.100:8000/price_predict';
   static final Logger _logger = Logger();
 
   static Future<Map<String, dynamic>> getForecast(String location, String grade,
       String forecastDate) async {
     try {
-      Uri url = Uri.parse('http://10.0.2.2:8000/predict');
+      Uri url = Uri.parse('${Config.baseUrl}/price_predict'); // Use the base URL from config
       _logger.i('Getting forecast');
       final response = await http.post(url,
           headers: {'Content-Type': 'application/json'},

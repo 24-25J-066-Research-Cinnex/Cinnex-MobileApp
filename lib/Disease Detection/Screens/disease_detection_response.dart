@@ -1,17 +1,19 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 import '../../Shared/Widget/curved_appbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DiseaseDetectionResponseScreen extends StatefulWidget {
   final Map<String, dynamic> detect;
   final File? image;
-  const DiseaseDetectionResponseScreen({
+
+   const DiseaseDetectionResponseScreen({
     super.key,
     required this.detect,
     required this.image,
   });
+
   @override
   DiseaseDetectionResponseScreenState createState() =>
       DiseaseDetectionResponseScreenState();
@@ -19,7 +21,13 @@ class DiseaseDetectionResponseScreen extends StatefulWidget {
 
 class DiseaseDetectionResponseScreenState
     extends State<DiseaseDetectionResponseScreen> {
-  static final Logger _logger = Logger();
+
+  static Image base64ToImage(String base64String) {
+    return Image.memory(
+      base64Decode(base64String),
+      fit: BoxFit.cover,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,9 @@ class DiseaseDetectionResponseScreenState
     final colorScheme = theme.colorScheme; // Access colors
     final textTheme = theme.textTheme; // Access text styles
 
-    _logger.d('Disease Detected: ${widget.detect['prediction']}');
+    Image? explanationImage = widget.detect['explanation_image'] != null
+        ? base64ToImage(widget.detect['explanation_image'])
+        : null;
 
     return Scaffold(
       body: Stack(
@@ -66,6 +76,7 @@ class DiseaseDetectionResponseScreenState
                     child: Column(
                       children: [
                         const SizedBox(height: 30),
+                        // Disease Detection Response original image
                         GestureDetector(
                           onTap: () {},
                           child: Container(
@@ -90,6 +101,26 @@ class DiseaseDetectionResponseScreenState
                                   ),
                           ),
                         ),
+                        const SizedBox(height: 30),
+                        // Disease Detection Response explanation image
+                        widget.detect['prediction'] == 'Cinnamon_Leaf Spot Disease' && explanationImage != null
+                            ? GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            height: 175,
+                            width: 350,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: colorScheme.primary, width: 2),
+                              borderRadius: BorderRadius.circular(12),
+                              color: Colors.grey[100],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: explanationImage,
+                            ),
+                          ),
+                        )
+                            : Container(),
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {

@@ -96,7 +96,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 70), // Space below AppBar
+                const SizedBox(height: 50), // Space below AppBar
 
                 // Instruction Text
                 Padding(
@@ -110,7 +110,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 20), // Space before input fields
+                const SizedBox(height: 10), // Space before input fields
 
                 // Input Fields
                 Expanded(
@@ -118,7 +118,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Column(
                       children: [
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 20),
                         GestureDetector(
                           onTap: () {
                             // Add file picker logic here
@@ -160,14 +160,14 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 10),
                         Text(
                           AppLocalizations.of(context)!.cinnamon_diseases_or,
                           style: theme.textTheme.bodyMedium!.copyWith(
                             color: Colors.grey,
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 10),
                         CameraButton(
                           text: AppLocalizations.of(context)!
                               .cinnamon_diseases_button1,
@@ -177,7 +177,6 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                         ),
                         // Cinnamon Grade Dropdown
 
-                        const SizedBox(height: 30),
 
                         // Region Dropdown
 
@@ -186,7 +185,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                         // Predict Market Price Button
                         CustomButton(
                           text: AppLocalizations.of(context)!
-                              .cinnamon_diseases_button2,
+                              .cinnamon_grades_button2,
                           onPressed: () async {
                             // Add logic to detect disease
                             if (_image == null) {
@@ -204,7 +203,37 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                               );
                             } else {
                               try {
+                                // Show loading dialog
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (BuildContext context) {
+                                    return Dialog(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            CircularProgressIndicator(),
+                                            SizedBox(width: 16),
+                                            Text(AppLocalizations.of(context)!.grade_ditect_loading,
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                                // Wait for a fixed duration (e.g., 3 seconds)
+                                await Future.delayed(Duration(seconds: 4));
+
                                 final detectResponse = await detectGrade();
+                                // Close the loading dialog
+                                Navigator.pop(context);
+
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -215,6 +244,8 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                                           )),
                                 );
                               } catch (e) {
+                                // Close the loading dialog
+                                Navigator.pop(context);
                                 _logger.e('Error getting forecast: $e');
                               }
                             }

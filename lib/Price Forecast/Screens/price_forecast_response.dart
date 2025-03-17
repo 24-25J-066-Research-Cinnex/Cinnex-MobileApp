@@ -110,7 +110,7 @@ class PriceForecastResponseScreen extends StatelessWidget {
 
                             Text(
                               AppLocalizations.of(context)!.predicted_price2,
-                              style: textTheme.bodyMedium,
+                              style: textTheme.bodySmall,
                               textAlign: TextAlign.center,
                             ),
                           ],
