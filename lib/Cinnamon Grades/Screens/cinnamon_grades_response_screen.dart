@@ -26,7 +26,7 @@ class CinnomonGradesResponseScreenState
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme; // Access colors
     final textTheme = theme.textTheme; // Access text styles
-
+    final String predictedGrade = widget.detect['predicted_grade'];
     _logger.d('Grade Detected: ${widget.detect['predicted_grade']}');
 
     return Scaffold(
@@ -111,14 +111,32 @@ class CinnomonGradesResponseScreenState
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          '${widget.detect['predicted_grade']}', // Disease Name
+                          '$predictedGrade', // Disease Name
                           style: textTheme.bodyLarge?.copyWith(
                             color: colorScheme.primary,
                             fontWeight: FontWeight.bold,
-                          )
-
+                          ),
                         ),
-
+                        if (predictedGrade == 'Alba')
+                          Text(
+                            AppLocalizations.of(context)!.grade_alba,
+                            style: const TextStyle(color: Colors.grey, fontSize: 13),
+                          ),
+                        if (predictedGrade == 'C5 Special')
+                          Text(
+                            AppLocalizations.of(context)!.grade_c5s,
+                            style: const TextStyle(color: Colors.grey, fontSize: 13),
+                          ),
+                        if (predictedGrade == 'M5')
+                          Text(
+                            AppLocalizations.of(context)!.grade_m5,
+                            style: const TextStyle(color: Colors.grey, fontSize: 13),
+                          ),
+                        if (predictedGrade == 'H1')
+                          Text(
+                            AppLocalizations.of(context)!.grade_h1,
+                            style: const TextStyle(color: Colors.grey, fontSize: 13),
+                          ),
                         const SizedBox(height: 16),
                         //Text(
                          // AppLocalizations.of(context)!

@@ -25,7 +25,7 @@
   "predicted_price": "Predicted Price",
   "predicted_price2": "Price for 1 Kilo Gram of Cinnamon in\nSri Lankan Rupees",
   "predicted_snack_bar": "Please select all required fields",
-  "price_ditect_loading": "Predicting price...",
+  "price_loading": "Predicting price...",
 
 
   "cinnamon_diseases": "Diseases Detection",
@@ -36,9 +36,22 @@
   "cinnamon_diseases_or": "Or",
   "cinnamon_diseases_button1": "Open Camera and take photo",
   "cinnamon_diseases_button2": "Predict the Disease",
+  "cinnamon_diseases_button3": "View the treatments",
 "cinnamon_diseases_snack_bar": "Please upload a clear photo to identify the disease.",
   "predicted_disease": "Predicted Disease",
- "disease_ditect_loading" : "Predicting Disease...",
+ "disease_loading" : "Predicting Disease...",
+  "disease_healthy": "",
+  "disease_black_sooty_mold": "black_sooty_mold",
+  "disease_leaf_blight": "This disease is a fungal infection that weakens the plant, causing premature leaf fall and leaf discoloration.",
+  "disease_gall_forming_mites": "In cool and humid environmental conditions, Cinnamon Leaf Gall Disease is caused by pests(mites and lice) sucking plant sap, especially during the nursery and sapling stages.",
+  "disease_gall_forming_louse": "In cool and humid environmental conditions, Cinnamon Leaf Gall Disease is caused by pests(mites and lice) sucking plant sap, especially during the nursery and sapling stages.",
+  "disease_gall_treatment": "mix 10 milliliters (two teaspoons) of Abamectin (18 grams per liter) in a 16-liter sprayer tank and spray thoroughly over the entire bush using a flat fan nozzle.",
+  "disease_spot_treatment": "Fungicide Application:\nApply a 1% Bordeaux mixture or another copper-based fungicide.\nSpray a solution containing 20 milliliters of Hexaconazole fungicide (50 grams per liter), diluted in 10 liters of water.\nSpray a solution containing 5 milliliters of tebuconazole fungicide (250 grams per liter), diluted in 10 liters of water",
+  "leaf_gall_forming_louse": "aa",
+  "cinnamon_leaf_gall_forming_mites":"Cinnamon Leaf Gall Forming Mites",
+  "leaf_gall_forming_louse_treatment": "Cinnamon",
+  "cinnamon_leaf_gall_forming_mites_treatment":"1. Chemical Control\nMiticide Application:\n\nAbamectin (18 g/L EC): Mix 10 milliliters of Abamectin in a 16-liter sprayer tank and apply thoroughly over the entire bush using a flat fan nozzle.\n\nApplication Timing: The optimal time for application is during the flushing stage when new leaves are emerging, as this is when the mite infestation begins.\n\nFrequency: In cases of severe infestation, repeat the application after two weeks.\n\nNote: Chemical control is recommended primarily for nurseries and young plantations (less than 3 years old).",
+  "cinnamon_black_sooty_mold_treatment": "1. Pest Control\nTarget Sap-Sucking Insects: Since these insects produce the honeydew that fosters sooty mold growth, controlling them is crucial.\n\nNeem Oil: Apply neem oil to affected plants to deter and manage populations of aphids, whiteflies, and scale insects.\n\nInsecticidal Soaps: Use insecticidal soaps to reduce insect populations.\n\n\n2. Mold Removal\nCleaning Leaves: Spray affected leaves with a solution of mild detergent (1 tablespoon per gallon of water), wait for 15 minutes, then rinse with water. This helps remove the mold from the leaf surface.\n\n\n3. Fertilization\nBalanced Nutrition: Apply a balanced fertilizer to promote healthy plant growth, which can help the plant recover from stress caused by the mold and associated insect activity.",
 
 
   "cinnamon_species": "Cinnamon Species",
@@ -50,9 +63,9 @@
   "cinnamon_species_button1": "Open Camera and Take Photo",
   "cinnamon_species_button2": "Identify the Species",
   "predicted_species": "Predicted Species",
-  "species_ditect_loading": "Predicting Species...",
-
-
+  "species_loading": "Predicting Species...",
+"pure_cinnamon_leaves":"Pure Cinnamon Leaves (Cinnamomum verum): These come from the true cinnamon tree and are commonly used for culinary and medicinal purposes. They have a mild, sweet aroma and are often used as a spice or for making cinnamon tea.",
+  "wild_cinnamon_leaves": "Wild Cinnamon Leaves (Cinnamomum species - other varieties): These come from wild-growing cinnamon trees and may have a stronger, more pungent smell.They may not have the same refined flavor as pure cinnamon leaves.",
 
   "cinnamon_grades": "Cinnamon Grades",
   "cinnamon_grades_landing_content1": "To assess the grade of cinnamon, provide high-resolution images focusing on the bark or quills of the cinnamon.",
@@ -63,8 +76,11 @@
   "cinnamon_grades_button1": "Open Camera and Take Photo",
   "cinnamon_grades_button2": "Predict the Grade",
   "predicted_grade": "predicted Grade",
-  "grade_ditect_loading": "Predicting Grade...",
-
+  "grade_loading": "Predicting Grade...",
+  "grade_alba":"The highest quality cinnamon, Alba has the thinnest and most delicate quills between 6mm-7mm in diameter. It has a refined aroma, smooth texture, and is highly valued in the international market.",
+  "grade_c5s":"A premium grade with quills slightly thicker than Alba (between 7mm -16mm in diameter). It has a strong aroma, smooth surface, and is widely used for high-end culinary applications.",
+  "grade_m5":"A mid-range grade with quills (between16-19mm in diameter). It has a slightly rougher texture but retains good flavor and aroma, making it popular for general use.",
+"grade_h1": "A lower grade with thicker, coarser quills (between 19mm-25mm in diameter). It is often used for extraction purposes, such as making cinnamon oil and powder, due to its strong flavor.",
 
   "language": "Language"
 

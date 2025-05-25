@@ -57,6 +57,26 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
     }
   }
 
+  Future<Map<String, dynamic>> getLstmForecast() async {
+    final district = selectedLocation;
+    final grade = selectedGrade;
+    final date = selectedDate;
+
+    if (district != null && grade != null && date != null) {
+      try {
+        final forecastLstm = await ForecastService.getLstmForecast(district, grade, date);
+        logger.d('Forecast: $forecastLstm');
+        return forecastLstm; // Return the forecast data
+      } catch (e) {
+        logger.e('Error getting forecast: $e');
+        rethrow;
+      }
+    } else {
+      logger.e('Please select all required fields');
+      throw Exception('Please select all required fields');
+    }
+  }
+
   /// Function to open the date picker and update the selected date.
   void _showDatePicker() async {
     showModalBottomSheet(
@@ -266,7 +286,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                                         children: [
                                           CircularProgressIndicator(),
                                           SizedBox(width: 16),
-                                          Text(AppLocalizations.of(context)!.price_ditect_loading),
+                                          Text(AppLocalizations.of(context)!.price_loading),
                                         ],
                                       ),
                                     ),
@@ -277,6 +297,8 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                               await Future.delayed(Duration(seconds: 4));
 
                               final forecastData = await getForecast();
+                              final forecastDataLstm = await getLstmForecast();
+
                               // Close the loading dialog
                               Navigator.pop(context);
                               // Navigate to the forecast response screen
@@ -285,6 +307,9 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                                 MaterialPageRoute(
                                   builder: (context) => PriceForecastResponseScreen(
                                     forecast: forecastData,
+                                    forecastLstm: forecastDataLstm,
+                                    selectedDate: selectedDate!,
+
                                     // Pass the required forecastData
                                   ),
                                 ),
