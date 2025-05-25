@@ -216,7 +216,7 @@ class _CinnomonGradesScreenState extends State<CinnomonGradesScreen> {
                                           children: [
                                             CircularProgressIndicator(),
                                             SizedBox(width: 16),
-                                            Text(AppLocalizations.of(context)!.grade_ditect_loading,
+                                            Text(AppLocalizations.of(context)!.grade_loading,
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,

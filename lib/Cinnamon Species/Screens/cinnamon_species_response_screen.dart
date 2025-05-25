@@ -26,8 +26,8 @@ class CinnomonSpeciesResponseScreenState
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme; // Access colors
     final textTheme = theme.textTheme; // Access text styles
-
-    _logger.d('Species Detected: ${widget.detect['leaf_type']}');
+    final String predictedSpecies = widget.detect['prediction'];
+    _logger.d('Species Detected: ${widget.detect['prediction']}');
 
     return Scaffold(
       body: Stack(
@@ -111,7 +111,7 @@ class CinnomonSpeciesResponseScreenState
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          '${widget.detect['leaf_type']}', // Disease Name
+                          '$predictedSpecies', // Disease Name
                             style: textTheme.bodyLarge?.copyWith(
                               color: colorScheme.primary,
                               fontWeight: FontWeight.bold,

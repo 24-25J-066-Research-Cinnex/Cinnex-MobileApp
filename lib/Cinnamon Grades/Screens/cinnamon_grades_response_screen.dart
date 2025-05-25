@@ -117,24 +117,24 @@ class CinnomonGradesResponseScreenState
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        if (predictedGrade == 'Alba Grade')
+                        if (predictedGrade == 'Alba')
                           Text(
-                            AppLocalizations.of(context)!.grade_ditect_alba,
+                            AppLocalizations.of(context)!.grade_alba,
                             style: const TextStyle(color: Colors.grey, fontSize: 13),
                           ),
-                        if (predictedGrade == 'C5 Special Grade')
+                        if (predictedGrade == 'C5 Special')
                           Text(
-                            AppLocalizations.of(context)!.grade_ditect_c5s,
+                            AppLocalizations.of(context)!.grade_c5s,
                             style: const TextStyle(color: Colors.grey, fontSize: 13),
                           ),
-                        if (predictedGrade == 'C5 Special Grade')
+                        if (predictedGrade == 'M5')
                           Text(
-                            AppLocalizations.of(context)!.grade_ditect_m5,
+                            AppLocalizations.of(context)!.grade_m5,
                             style: const TextStyle(color: Colors.grey, fontSize: 13),
                           ),
-                        if (predictedGrade == 'C5 Special Grade')
+                        if (predictedGrade == 'H1')
                           Text(
-                            AppLocalizations.of(context)!.grade_ditect_h1,
+                            AppLocalizations.of(context)!.grade_h1,
                             style: const TextStyle(color: Colors.grey, fontSize: 13),
                           ),
                         const SizedBox(height: 16),

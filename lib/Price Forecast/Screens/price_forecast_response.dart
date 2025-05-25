@@ -39,6 +39,11 @@ class _PriceForecastResponseScreenState extends State<PriceForecastResponseScree
         dialogType: DialogType.warning,
         animType: AnimType.rightSlide,
         title: 'Advice',
+        titleTextStyle: const TextStyle(
+          color: Colors.red, // Set the title color to red
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
         desc: widget.forecastLstm['advice'] ?? 'No advice available.',
         btnOkOnPress: () {},
         btnOkColor: Color(0xFF018241),
@@ -152,7 +157,7 @@ class _PriceForecastResponseScreenState extends State<PriceForecastResponseScree
 
                             // Price Display
                             Text(
-                              'LKR ${forecast['predicted_price']}', // Display price
+                              'LKR ${forecastLstm['predictions'].last.toStringAsFixed(2)}', // Display the last price
                               style: textTheme.titleLarge?.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: colorScheme.primary,
@@ -192,6 +197,7 @@ class _PriceForecastResponseScreenState extends State<PriceForecastResponseScree
                           ),
                           primaryYAxis: NumericAxis(
                             title: AxisTitle(text: 'Price (LKR)'),
+
                           ),
                           series: <CartesianSeries<dynamic, dynamic>>[
                             LineSeries<ChartData, DateTime>(
@@ -207,7 +213,6 @@ class _PriceForecastResponseScreenState extends State<PriceForecastResponseScree
                     ],
                   ),
                 ),
-
                 // Spacer to push elements to the bottom
                 const Spacer(),
               ],

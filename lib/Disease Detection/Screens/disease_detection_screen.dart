@@ -221,7 +221,7 @@ class DiseaseDetectionScreenState extends State<DiseaseDetectionScreen> {
                                           children: [
                                             CircularProgressIndicator(),
                                             SizedBox(width: 16),
-                                            Text(AppLocalizations.of(context)!.disease_ditect_loading,
+                                            Text(AppLocalizations.of(context)!.disease_loading,
                                               style: TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,

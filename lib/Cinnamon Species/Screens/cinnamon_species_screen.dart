@@ -214,7 +214,7 @@ class _CinnomonSpeciesScreenState extends State<CinnomonSpeciesScreen> {
                                           children: [
                                             CircularProgressIndicator(),
                                             SizedBox(width: 16),
-                                            Text(AppLocalizations.of(context)!.species_ditect_loading,
+                                            Text(AppLocalizations.of(context)!.species_loading,
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,

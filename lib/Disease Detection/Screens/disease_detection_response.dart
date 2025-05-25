@@ -50,22 +50,39 @@ class DiseaseDetectionResponseScreenState
                 ),
               ),
               const SizedBox(height: 16),
-              if (predictedDisease == 'Leaf_Gall_Forming')
+              if (predictedDisease == 'Black Sooty Mold')
                 Text(
-                  AppLocalizations.of(context)!.disease_ditect_gall_treatment,
+                  AppLocalizations.of(context)!.cinnamon_leaf_gall_forming_mites_treatment,
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.grey[600],
                   ),
                 ),
-              if (predictedDisease == 'Cinnamon_Leaf Spot Disease')
+              if (predictedDisease == 'Leaf Blight Disease')
                 Text(
-                  AppLocalizations.of(context)!.disease_ditect_spot_treatment,
+                  AppLocalizations.of(context)!.cinnamon_leaf_gall_forming_mites,
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.grey[600],
                   ),
                 ),
+              if (predictedDisease == 'Leaf Gall Forming Louse')
+                Text(
+                  AppLocalizations.of(context)!.cinnamon_leaf_gall_forming_mites,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey[600],
+                  ),
+                ),
+              if (predictedDisease == 'Leaf Gall Forming Mites')
+                Text(
+                  AppLocalizations.of(context)!.cinnamon_leaf_gall_forming_mites_treatment,
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.grey[600],
+                  ),
+                ),
+
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
@@ -85,8 +102,8 @@ class DiseaseDetectionResponseScreenState
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme; // Access colors
     final textTheme = theme.textTheme; // Access text styles
-    final String predictedDisease = widget.detect['prediction'];
-    _logger.d('Grade Detected: ${widget.detect['prediction']}');
+    final String predictedDisease = widget.detect['predicted_class'];
+    _logger.d('Disease Detected: ${widget.detect['predicted_class']}');
 
     Image? explanationImage = widget.detect['explanation_image'] != null
         ? base64ToImage(widget.detect['explanation_image'])
@@ -176,12 +193,16 @@ class DiseaseDetectionResponseScreenState
                         const SizedBox(height: 20),
                         Text(
                           switch (predictedDisease) {
-                            'Cinnamon_Healthy Leaf' =>
+                            'Healthy Leaf' =>
                               'This is a Healthy one', // Replace with your desired text for DiseaseA
-                            'Cinnamon_Leaf Spot Disease' =>
-                              'Cinnamon Leaf Spot', // Replace with your desired text for DiseaseB
-                            'Leaf_Gall_Forming' =>
-                              'Cinnamon Leaf Gall', // Replace with your desired text for DiseaseC
+                            'Black Sooty Mold' =>
+                              'Cinnamon Black Sooty Mold', // Replace with your desired text for DiseaseB
+                            'Leaf Blight Disease' =>
+                              'Cinnamon Leaf Blight Disease', // Replace with your desired text for DiseaseC
+                            'Leaf Gall Forming Louse' =>
+                              'Cinnamon Leaf Gall Forming Louse', // Replace with your desired text for DiseaseB
+                            'Leaf Gall Forming Mites' =>
+                            'Cinnamon Leaf Gall Forming Mites', // Replace with your desired text for DiseaseB
                             _ =>
                               'Unknown Disease', // Default text if the disease is not recognized
                           },
@@ -194,19 +215,25 @@ class DiseaseDetectionResponseScreenState
                         if (predictedDisease == 'Cinnamon_Healthy Leaf')
                           Text(
                             AppLocalizations.of(context)!
-                                .disease_ditect_healthy,
+                                .disease_healthy,
                             style: const TextStyle(
                                 color: Colors.grey, fontSize: 13),
                           ),
-                        if (predictedDisease == 'Cinnamon_Leaf Spot Disease')
+                        if (predictedDisease == 'Black Sooty Mold')
                           Text(
-                            AppLocalizations.of(context)!.disease_ditect_spot,
+                            AppLocalizations.of(context)!.disease_gall_treatment,
                             style: const TextStyle(
                                 color: Colors.grey, fontSize: 13),
                           ),
-                        if (predictedDisease == 'Leaf_Gall_Forming')
+                        if (predictedDisease == 'Leaf Gall Forming Louse')
                           Text(
-                            AppLocalizations.of(context)!.disease_ditect_gall,
+                            AppLocalizations.of(context)!.disease_gall_treatment,
+                            style: const TextStyle(
+                                color: Colors.grey, fontSize: 13),
+                          ),
+                        if (predictedDisease == 'Cinnamon Leaf Gall Forming Mites')
+                          Text(
+                            AppLocalizations.of(context)!.cinnamon_leaf_gall_forming_mites_treatment,
                             style: const TextStyle(
                                 color: Colors.grey, fontSize: 13),
                           ),

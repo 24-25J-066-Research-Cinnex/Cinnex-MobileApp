@@ -286,7 +286,7 @@ class _PriceForecastScreenState extends State<PriceForecastScreen> {
                                         children: [
                                           CircularProgressIndicator(),
                                           SizedBox(width: 16),
-                                          Text(AppLocalizations.of(context)!.price_ditect_loading),
+                                          Text(AppLocalizations.of(context)!.price_loading),
                                         ],
                                       ),
                                     ),
